@@ -11,7 +11,7 @@
 ## 1. Stack
 - Frontend: React ([Next.js](https://nextjs.org/))
 
-- Hosting: [Firebase Hosting](https://firebase.google.com/products/hosting)
+- Hosting: [Firebase Hosting](https://firebase.google.com/products/hosting) ([Example](https://github.com/vercel/next.js/tree/canary/examples/with-firebase-hosting))
 
 - Database: [Cloud Firestore](https://firebase.google.com/products/firestore)
 
@@ -35,7 +35,7 @@
 ## 2. Querys
 Since we're using a NoSQL database (Cloud Firestore), rather than designing a database based on entities, (as we would with a relational database,) our design is rooted in our queries.
 
-- https://www.dataversity.net/how-to-design-schema-for-your-nosql-database/
+https://www.dataversity.net/how-to-design-schema-for-your-nosql-database/
 
 ### 2.1. Report Queries
 - Recent Reports
@@ -59,4 +59,6 @@ Since we're using a NoSQL database (Cloud Firestore), rather than designing a da
 - Analyst performance
 - Team performance
 
+
 ## 3. Functions
+![Flowchart](diagrams/build/reports.svg)

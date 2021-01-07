@@ -1,0 +1,5 @@
+st=>start: New CSV from Fidelity
+func=>subroutine: Trade Ledger Cleaner Function
+e=>end: Trade Collection (Database)
+
+st(right)->func(right)->e
