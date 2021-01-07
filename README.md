@@ -6,7 +6,7 @@
   - [2.2. User Queries](#22-user-queries)
   - [2.3. Trade Queries](#23-trade-queries)
   - [2.4. Cross-Collection Queries](#24-cross-collection-queries)
-- [](#)
+- [3. Functions](#3-functions)
 
 ## 1. Stack
 - Frontend: React ([Next.js](https://nextjs.org/))
@@ -59,4 +59,4 @@ Since we're using a NoSQL database (Cloud Firestore), rather than designing a da
 - Analyst performance
 - Team performance
 
-## 
+## 3. Functions
