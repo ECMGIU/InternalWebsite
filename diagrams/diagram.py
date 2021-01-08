@@ -1,6 +1,9 @@
 from diagrams import Diagram
 from diagrams.custom import Custom
 from diagrams.firebase.develop import *
+from diagrams.gcp.compute import Functions
+from diagrams.gcp.database import Firestore
+from diagrams.gcp.storage import Storage
 from diagrams.programming.framework import React
 
 graph_attr = {

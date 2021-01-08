@@ -81,7 +81,7 @@ In our React frontend, we can access this function directly through the firebase
 ![Report Ingestion Flowchart](diagrams/build/report_ingestion.png)
 
 #### 3.1.3. Historical Data
-Currently, our historical data is pulled through the =GOOGLEFINANCE function on Google Sheets, which is free but super slow. Sunny has been working on alternative sources for our historical data, which are already being ingested into Firestore. We'll continue to expand this, and further automate the process in three ways.
+Currently, our historical data is pulled through the =GOOGLEFINANCE function on Google Sheets, which is free but super slow. Sunny has been working on alternative sources for our historical data, [which are already being ingested into Firestore](https://github.com/ECMGIU/HistoricalData). We'll continue to expand this, put it into a serverless function, and further automate the process in three ways.
   1. Timed updates (hourly, daily, whatever we want it to be) (Cost $0.10/job/month)
   2. Automated selection (pulling exactly the hisotrical data we need, without configuration)
   3. Intelligent querying (allowing more dynamic querying)
@@ -89,4 +89,6 @@ Currently, our historical data is pulled through the =GOOGLEFINANCE function on 
 ![Historical Data Ingestion Flowchart](diagrams/build/historical_data_ingestion.png)
 
 ### 3.2. Data Maintenence
+Since we've chosen NoSQL, we're going to carry a lot of redundant data through the structure. *This is intentional.*
+
 ### 3.3. Output
