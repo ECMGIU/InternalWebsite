@@ -23,6 +23,7 @@
     - [4.1.3. Historical Data](#413-historical-data)
     - [4.1.4. Ticker Data](#414-ticker-data)
   - [4.2. Data Maintenence](#42-data-maintenence)
+    - [Dues Marking](#dues-marking)
   - [4.3. Output](#43-output)
 - [5. Authentication](#5-authentication)
 - [6. Visualization](#6-visualization)
@@ -204,9 +205,12 @@ http://autoc.finance.yahoo.com/autoc?lang=en&query={Ticker}
 ![Ticker Ingestion Flowchart](diagrams/build/ticker_ingestion.png)
 
 ### 4.2. Data Maintenence
-Since we've chosen NoSQL, we're going to carry a lot of redundant data through the structure. *This is intentional.* What this means, is we're going to denormalize (duplicate) data across different tables. For those of you with a strong relational background (K204, anyone?) this sounds egregious. *I know.* What this allows though is an extremely simplified set of API calls that are incredibly performant. It's actually been used for a long time to achieve better performance in SQL queries, by minimizing the JOINs that occur on any particular request.
+Since we've chosen NoSQL, we're going to carry a lot of redundant data through the structure. *This is intentional.* What this means, is we're going to denormalize (duplicate) data across different Collections and Documents. For those of you with a strong relational background (K204, anyone?) this sounds egregious. *I know.* What this allows though is an extremely simplified set of API calls that are incredibly performant. It's actually been used for a long time to achieve better performance in SQL queries, by minimizing the JOINs that occur on any particular request.
 
-The cost of this though, is when we update a record, we've also got to update everywhere else that data is replicated. We'll do this through another set of cloud functions, one for each [Collection](#3-collections-database-architecture).
+The cost of this though, is when we update a Document, we've also got to update everywhere else that data is replicated. We'll do this through another set of cloud functions, one for each [Collection](#3-collections-database-architecture).
+
+#### Dues Marking
+When a member successfully pays dues on Stripe, we can set up a webhook URL that will get hit. That webhook URL will point to this function, which will mark them as dues paid in their User Document.
 
 ### 4.3. Output
 In the longer term, I think we can start automating production of some deliverables. A couple ideas:
