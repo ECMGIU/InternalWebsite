@@ -96,9 +96,9 @@ with Diagram(
 
     # access flows
     [historical, trades] >> d3js >> react
-    meta >> [react, files]
-    trades >> react
-    ticker >> react
+    meta >> files
+    [trades, ticker] >> react
+    react << meta
 
     # output flows
     trades >> portfolio_update_func >> Discord
