@@ -6,13 +6,20 @@
   - [2.2. User Queries](#22-user-queries)
   - [2.3. Trade Queries](#23-trade-queries)
   - [2.4. Cross-Collection Queries](#24-cross-collection-queries)
-- [3. Functions](#3-functions)
-  - [3.1. Ingestion](#31-ingestion)
-    - [3.1.1. Trades](#311-trades)
-    - [3.1.2. Reports](#312-reports)
-    - [3.1.3. Historical Data](#313-historical-data)
-  - [3.2. Data Maintenence](#32-data-maintenence)
-  - [3.3. Output](#33-output)
+- [3. Collections (Database Architecture)](#3-collections-database-architecture)
+  - [3.1. Users](#31-users)
+  - [3.2. Teams](#32-teams)
+  - [3.3. Trades](#33-trades)
+  - [3.4. Reports](#34-reports)
+  - [3.5. Historical Data](#35-historical-data)
+- [4. Functions](#4-functions)
+  - [4.1. Ingestion](#41-ingestion)
+    - [4.1.1. Trades](#411-trades)
+    - [4.1.2. Reports](#412-reports)
+    - [4.1.3. Historical Data](#413-historical-data)
+  - [4.2. Data Maintenence](#42-data-maintenence)
+  - [4.3. Output](#43-output)
+- [5. Analytics](#5-analytics)
 
 ## 1. Stack
 - Frontend: React ([Next.js](https://nextjs.org/))
@@ -65,22 +72,28 @@ https://www.dataversity.net/how-to-design-schema-for-your-nosql-database/
 - Analyst performance
 - Team performance
 
+## 3. Collections (Database Architecture)
+### 3.1. Users
+### 3.2. Teams
+### 3.3. Trades
+### 3.4. Reports
+### 3.5. Historical Data
 
-## 3. Functions
-### 3.1. Ingestion
-#### 3.1.1. Trades
+## 4. Functions
+### 4.1. Ingestion
+#### 4.1.1. Trades
 When we get new trade data from Fidelity, this function will take the body of the CSV file and write it into individual Documents on the Trades Collection. I already implemented the core logic for this in the [Master Trade Ledger Google Sheet](https://docs.google.com/spreadsheets/d/1hmaPz5sL_8HmIBEJXbW8h6fERes7gXg7QC8KmoGRmjg/edit#gid=112027560).
 
 ![Trade Ingestion Flowchart](diagrams/build/trade_ingestion.png)
 
-#### 3.1.2. Reports
+#### 4.1.2. Reports
 When an analyst has a new report, we need to collect both the PDF itself and metadata surrounding it: Ticker, Analyst, etc. In it's simplest form, this would require two sequential API calls, one to Cloud Storage with the file, and then one to the Reports Collection with the Metadata, including the URL of the file download.
 
 In our React frontend, we can access this function directly through the firebase package in a single function. However, by abstracting these two actions to a single function, we can also access them via an HTTP request. This opens up a cool project: we can ingest reports into the system through a discord bot.
 
 ![Report Ingestion Flowchart](diagrams/build/report_ingestion.png)
 
-#### 3.1.3. Historical Data
+#### 4.1.3. Historical Data
 Currently, our historical data is pulled through the =GOOGLEFINANCE function on Google Sheets, which is free but super slow. Sunny has been working on alternative sources for our historical data, [which are already being ingested into Firestore](https://github.com/ECMGIU/HistoricalData). We'll continue to expand this, put it into a serverless function, and further automate the process in three ways.
   1. Timed updates (hourly, daily, whatever we want it to be) (Cost $0.10/job/month)
   2. Automated selection (pulling exactly the hisotrical data we need, without configuration)
@@ -88,7 +101,12 @@ Currently, our historical data is pulled through the =GOOGLEFINANCE function on 
 
 ![Historical Data Ingestion Flowchart](diagrams/build/historical_data_ingestion.png)
 
-### 3.2. Data Maintenence
-Since we've chosen NoSQL, we're going to carry a lot of redundant data through the structure. *This is intentional.*
+### 4.2. Data Maintenence
+Since we've chosen NoSQL, we're going to carry a lot of redundant data through the structure. *This is intentional.* What this means, is we're going to denormalize (duplicate) data across different tables. For those of you with a strong relational background (K204, anyone) this sounds egregious. *I know.* What this allows though is an extremely simplified set of API calls that are incredibly performant. It's actually been used for a long time to achieve better performance in SQL queries, by minimizing the JOINs that occur on any particular request.
 
-### 3.3. Output
+The cost of this though, is when we update a record, we've also got to update everywhere else that data is replicated. We'll do this through another set of cloud functions, one for each [Collection](#3-collections-database-architecture).
+
+### 4.3. Output
+
+## 5. Analytics
+*In this context, "Analytics" refers to tracking the pageviews, button clicks, uploads, logins, etc. within our application, rather than the portfolio analytics we've been doing.*
