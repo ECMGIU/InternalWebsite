@@ -29,6 +29,8 @@
   - [7.2. Tailwind CSS](#72-tailwind-css)
 - [8. Outstanding Questions](#8-outstanding-questions)
 
+![Main Flowchart](diagrams/build/main.png)
+
 ## 1. Tech Stack
 - Frontend: [React](https://reactjs.org/)
 
@@ -170,8 +172,6 @@ When we get new trade data from Fidelity, this function will take the body of th
 
 ![Trade Ingestion Flowchart](diagrams/build/trade_ingestion.png)
 
-***Note:** I'm using Google Cloud icons, but we'll be accessing all of these tools through Firebase. Same goes for later diagrams.*
-
 #### 4.1.2. Reports
 When an analyst has a new report, we need to collect both the PDF itself and metadata surrounding it: Ticker, Analyst, etc. In it's simplest form, this would require two sequential API calls, one to Cloud Storage with the file, and then one to the Reports Collection with the Metadata, including the URL of the file download.
 
@@ -180,7 +180,7 @@ In our React frontend, we can access this function directly through the firebase
 ![Report Ingestion Flowchart](diagrams/build/report_ingestion.png)
 
 #### 4.1.3. Historical Data
-Currently, our historical data is pulled through the =GOOGLEFINANCE function on Google Sheets, which is free but super slow. Sunny has been working on alternative sources for our historical data, [which are already being ingested into Firestore](https://github.com/ECMGIU/HistoricalData). We'll continue to expand this, put it into a serverless function, and further automate the process in three ways.
+Currently, our historical data is pulled through the `=GOOGLEFINANCE` function on Google Sheets, which is free but super slow. Sunny has been working on alternative sources for our historical data, [which are already being ingested into Firestore](https://github.com/ECMGIU/HistoricalData). We'll continue to expand this, put it into a serverless function, and further automate the process in three ways.
   1. Timed updates (hourly, daily, whatever we want it to be) (Cost $0.10/job/month)
   2. Automated selection (pulling exactly the hisotrical data we need, without configuration)
   3. Intelligent querying (allowing more dynamic querying)
@@ -205,6 +205,8 @@ Obviously we're going to be dealing with some sensitive (though not necessarily 
 ![IU Login](images/iu_login.png)
 
 Meaning, you'll be able to log in to this platform just like you do Canvas, iGPS, One.IU and every other IU service and we'll have the same protections (2FA through Duo) as the rest of the university.
+
+![Auth Flowchart](diagrams/build/auth.png)
 
 ## 6. Visualization
 The name of the game and one of the big end goals here is visualization.
