@@ -9,10 +9,10 @@
   - [2.4. Cross-Collection Queries](#24-cross-collection-queries)
 - [3. Collections (Database Architecture)](#3-collections-database-architecture)
   - [3.1. Users](#31-users)
-  - [3.2. Teams](#32-teams)
-  - [3.3. Trades](#33-trades)
-  - [3.4. Reports](#34-reports)
-  - [3.5. Historical Data](#35-historical-data)
+  - [3.2. Trades](#32-trades)
+  - [3.3. Reports](#33-reports)
+    - [3.3.1. Feedback Subcollection](#331-feedback-subcollection)
+  - [3.4. Historical Data](#34-historical-data)
 - [4. Functions](#4-functions)
   - [4.1. Ingestion](#41-ingestion)
     - [4.1.1. Trades](#411-trades)
@@ -21,7 +21,7 @@
   - [4.2. Data Maintenence](#42-data-maintenence)
   - [4.3. Output](#43-output)
 - [5. Analytics](#5-analytics)
-- [Outstanding Questions](#outstanding-questions)
+- [6. Outstanding Questions](#6-outstanding-questions)
 
 ## 1. Stack
 - Frontend: React ([Next.js](https://nextjs.org/))
@@ -62,9 +62,10 @@ https://www.dataversity.net/how-to-design-schema-for-your-nosql-database/
 - Feedback for a given Report
 
 ### 2.2. User Queries
-- Role for given user
-- Get all members of a team ([may need a Team collection](https://medium.com/firebase-developers/how-to-build-a-team-based-user-management-system-with-firebase-6a9a6e5c740d))
+- Get current role of a given user
 - Get current team of a given user
+- Get all users in a given team
+- Get all users of a given role
 
 ### 2.3. Trade Queries
 - Currently open positions
@@ -76,12 +77,49 @@ https://www.dataversity.net/how-to-design-schema-for-your-nosql-database/
 
 ## 3. Collections (Database Architecture)
 ### 3.1. Users
-- IU Username
+| IU Username | Role    | Team           |
+| ----------- | ------- | -------------- |
+| wadefletch  | tpm     | technology     |
+| samlicht    | analyst | domesticequity |
+| apeddi      | analyst | sustainable    |
+| ...         | ...     | ....           |
 
-### 3.2. Teams
-### 3.3. Trades
-### 3.4. Reports
-### 3.5. Historical Data
+This super simple schema gives us simplicity with one cost, that users can't carry multiple roles/teams. Obviously there are exceptions to this rule (me until not long ago) but I believe that's an acceptable limitation. The increase in complexity and development time moving to a Many-to-One model here doesn't outweight the minimal benefit.
+
+### 3.2. Trades
+| Trade ID          | Quarter | Date       | Ticker | Action | Qty | Price | Commission | Fees | Amount  |
+| ----------------- | ------- | ---------- | ------ | ------ | --- | ----- | ---------- | ---- | ------- |
+| TR_IAU_1562889600 | Q3 2019 | 2019-07-12 | IAU    | BUY    | 10  | 13.52 |            |      | -135.25 |
+| TR_IAU_1578268800 | Q1 2020 | 2020-01-06 | IAU    | BUY    | 4   | 15.07 |            |      | -60.28  |
+| ...               | ...     | ...        | ...    | ...    | ... | ...   | ...        | ...  | ...     |
+
+*Trade ID is TR_{Ticker}_{Epoch form of Date}.*
+
+*Commission is only used for option transactions.*
+
+*Fees are only incurred on SELL actions.*
+
+### 3.3. Reports
+| Report ID          | User       | Ticker | Timestamp  | URL         | Feedback                                    |
+| ------------------ | ---------- | ------ | ---------- | ----------- | ------------------------------------------- |
+| RE_INDA_1562889600 | wadefletch | INDA   | 2019-07-12 | https://... | *Feedback Subcollection (see §3.3.1 below)* |
+| ...                | ...        | ...    | ...        | ...         | ...                                         |
+*Report ID is RE_{Ticker}_{Epoch form of Date}.*
+
+#### 3.3.1. Feedback Subcollection
+| User     | Timestamp  | Comment                         |
+| -------- | ---------- | ------------------------------- |
+| sarnagar | 2019-07-12 | I've never seen a worse report. |
+| ...      | ...        | ...                             |
+
+### 3.4. Historical Data
+Each Document will be a Ticker, so this is technically a subcollection.
+
+| Date | Open | Low | High | Close | Volume |
+| ---- | ---- | --- | ---- | ----- | ------ |
+| ...  | ...  | ... | ...  | ...   | ...    |
+
+*I felt this one was self-explanatory.*
 
 ## 4. Functions
 ### 4.1. Ingestion
@@ -118,7 +156,7 @@ In the longer term, I think we can start automating production of some deliverab
 - Congratulate analysts who outperform their peers.
 
 ## 5. Analytics
-> In this context, "Analytics" refers to tracking the pageviews, button clicks, uploads, logins, etc. within our application, rather than the portfolio analytics we've been doing.
+*In this context, "Analytics" refers to tracking the pageviews, button clicks, uploads, logins, etc. within our application, rather than the portfolio analytics we've been doing.*
 
-## Outstanding Questions
+## 6. Outstanding Questions
 1. How frequently do we need portfolio performance data updated? I say daily, because intraday is going to be expensive and if you really need intraday, just log in to Fidelity. If we do daily, we can just set up functions that keep everything updated at EOD.
