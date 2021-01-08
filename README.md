@@ -14,12 +14,14 @@
   - [3.3. Reports](#33-reports)
     - [3.3.1. Feedback Subcollection](#331-feedback-subcollection)
   - [3.4. Historical Data](#34-historical-data)
+  - [Ticker Data](#ticker-data)
   - [3.5. Tasks](#35-tasks)
 - [4. Functions](#4-functions)
   - [4.1. Ingestion](#41-ingestion)
     - [4.1.1. Trades](#411-trades)
     - [4.1.2. Reports](#412-reports)
     - [4.1.3. Historical Data](#413-historical-data)
+    - [Ticker Data](#ticker-data-1)
   - [4.2. Data Maintenence](#42-data-maintenence)
   - [4.3. Output](#43-output)
 - [5. Authentication](#5-authentication)
@@ -147,6 +149,13 @@ Each Document will be a Ticker, so this is technically a subcollection.
 
 *I felt this one was self-explanatory.*
 
+### Ticker Data
+| Ticker | Company Name          | Exchange |
+| ------ | --------------------- | -------- |
+| AAPL   | Apple Inc.            | NASDAQ   |
+| MSFT   | Microsoft Corporation | NASDAQ   |
+| ...    | ...                   | ...      |
+
 ### 3.5. Tasks
 | User       | Task                     | Description | Completed? |
 | ---------- | ------------------------ | ----------- | ---------- |
@@ -183,9 +192,16 @@ In our React frontend, we can access this function directly through the firebase
 Currently, our historical data is pulled through the `=GOOGLEFINANCE` function on Google Sheets, which is free but super slow. Sunny has been working on alternative sources for our historical data, [which are already being ingested into Firestore](https://github.com/ECMGIU/HistoricalData). We'll continue to expand this, put it into a serverless function, and further automate the process in three ways.
   1. Timed updates (hourly, daily, whatever we want it to be) (Cost $0.10/job/month)
   2. Automated selection (pulling exactly the hisotrical data we need, without configuration)
-  3. Intelligent querying (allowing more dynamic querying)
+  3. Dynamic querying (far better insights than Google Sheets)
 
 ![Historical Data Ingestion Flowchart](diagrams/build/historical_data_ingestion.png)
+
+#### Ticker Data
+We'll probably want to refer to companies with their full names and exchanges at some point, not just tickers. Yahoo Finance makes this data available to us via the following endpoint.
+```
+http://autoc.finance.yahoo.com/autoc?lang=en&query={Ticker}
+```
+![Ticker Ingestion Flowchart](diagrams/build/ticker_ingestion.png)
 
 ### 4.2. Data Maintenence
 Since we've chosen NoSQL, we're going to carry a lot of redundant data through the structure. *This is intentional.* What this means, is we're going to denormalize (duplicate) data across different tables. For those of you with a strong relational background (K204, anyone?) this sounds egregious. *I know.* What this allows though is an extremely simplified set of API calls that are incredibly performant. It's actually been used for a long time to achieve better performance in SQL queries, by minimizing the JOINs that occur on any particular request.

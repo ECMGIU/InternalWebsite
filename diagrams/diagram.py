@@ -36,6 +36,13 @@ with Diagram(
 
     [Quandl, YahooFinance] >> func >> historical
 
+with Diagram(filename="build/ticker_ingestion", show=False, graph_attr=graph_attr):
+    YahooFinance = Custom("Yahoo! Finance", "../custom_icons/yahoo.jpg")
+    func = Functions("Ticker Data\n Ingestion Function")
+    ticker = Firestore("Ticker Data")
+
+    YahooFinance >> func >> ticker
+
 with Diagram(filename="build/auth", show=False, graph_attr=graph_attr):
     IU = Custom("IU SAML 2.0", "../custom_icons/iu.jpg")
     react = React("React Frontend")
@@ -62,6 +69,7 @@ with Diagram(
     trade_func = Functions("Trade Ingestion\n Function")
     report_func = Functions("Report Ingestion\n Function")
     hist_func = Functions("Historical Data\n Ingestion Function")
+    ticker_func = Functions("Ticker Data\n Ingestion Function")
 
     report_export_func = Functions("Export Report\n Book Function")
     portfolio_update_func = Functions("Discord Portfolio\n Update Function")
@@ -71,6 +79,7 @@ with Diagram(
     historical = Firestore("Historical Data")
     meta = Firestore("Reports (Metadata)")
     trades = Firestore("Trades")
+    ticker = Firestore("Ticker Data")
 
     files = Storage("Reports (Files)")
 
@@ -80,6 +89,7 @@ with Diagram(
     Fidelity >> trade_func >> trades
     [Quandl, YahooFinance] >> hist_func >> historical
     [Discord, react] >> report_func >> [files, meta]
+    YahooFinance >> ticker_func >> ticker
 
     # auth flow
     auth >> [react, IU] << auth
@@ -88,6 +98,7 @@ with Diagram(
     [historical, trades] >> d3js >> react
     meta >> [react, files]
     trades >> react
+    ticker >> react
 
     # output flows
     trades >> portfolio_update_func >> Discord
