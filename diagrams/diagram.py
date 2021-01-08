@@ -92,7 +92,7 @@ with Diagram(
     YahooFinance >> ticker_func >> ticker
 
     # auth flow
-    auth >> [react, IU] << auth
+    react >> auth >> IU
 
     # access flows
     [historical, trades] >> d3js >> react
