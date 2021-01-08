@@ -1,20 +1,20 @@
 # ECMG Internal Website Planning <!-- omit in toc -->
 *Wade Fletcher, 2021*
 
-- [1. Stack](#1-stack)
-- [2. Querys](#2-querys)
+- [1. Tech Stack](#1-tech-stack)
+- [2. Queries](#2-queries)
   - [2.1. Report Queries](#21-report-queries)
   - [2.2. User Queries](#22-user-queries)
   - [2.3. Trade Queries](#23-trade-queries)
-- [Task Queries](#task-queries)
-  - [2.4. Cross-Collection Queries](#24-cross-collection-queries)
+  - [2.4. Task Queries](#24-task-queries)
+  - [2.5. Performance Queries](#25-performance-queries)
 - [3. Collections (Database Architecture)](#3-collections-database-architecture)
   - [3.1. Users](#31-users)
   - [3.2. Trades](#32-trades)
   - [3.3. Reports](#33-reports)
     - [3.3.1. Feedback Subcollection](#331-feedback-subcollection)
   - [3.4. Historical Data](#34-historical-data)
-  - [Tasks](#tasks)
+  - [3.5. Tasks](#35-tasks)
 - [4. Functions](#4-functions)
   - [4.1. Ingestion](#41-ingestion)
     - [4.1.1. Trades](#411-trades)
@@ -22,15 +22,25 @@
     - [4.1.3. Historical Data](#413-historical-data)
   - [4.2. Data Maintenence](#42-data-maintenence)
   - [4.3. Output](#43-output)
-- [5. Analytics](#5-analytics)
-- [6. Outstanding Questions](#6-outstanding-questions)
+- [5. Authentication](#5-authentication)
+- [6. Visualization](#6-visualization)
+- [7. Frontend](#7-frontend)
+  - [7.1. React](#71-react)
+  - [7.2. Tailwind CSS](#72-tailwind-css)
+- [8. Outstanding Questions](#8-outstanding-questions)
 
-## 1. Stack
-- Frontend: React ([Next.js](https://nextjs.org/))
+## 1. Tech Stack
+- Frontend: [React](https://reactjs.org/)
 
-- Hosting: [Firebase Hosting](https://firebase.google.com/products/hosting) ([Example](https://github.com/vercel/next.js/tree/canary/examples/with-firebase-hosting))
+  Developed by [Facebook](https://www.facebook.com/), React is the best frontend framework on the market right now. In addition to being the best out there, a *ton* of the CS job market right now is React-adjacent if not hands-on React, so I think this will be valuable experience career-wise.
+
+- Hosting: [Firebase Hosting](https://firebase.google.com/products/hosting)
+
+  Free hosting on the same servers that host Google.
 
 - Database: [Cloud Firestore](https://firebase.google.com/products/firestore)
+
+  Used for storage of all of our [Collections](#3-collections-database-architecture)
 
 - Storage: [Cloud Storage](https://firebase.google.com/products/storage)
 
@@ -49,8 +59,10 @@
   Ties in real nice with Firebase, so why not?
 
 
-## 2. Querys
+## 2. Queries
 Since we're using a NoSQL database (Cloud Firestore), rather than designing a database based on entities, (as we would with a relational database,) our design is rooted in our queries.
+
+This is intended to be an exhaustive and updated list of everything we could pull out of the database.
 
 https://www.dataversity.net/how-to-design-schema-for-your-nosql-database/
 
@@ -75,12 +87,13 @@ https://www.dataversity.net/how-to-design-schema-for-your-nosql-database/
 - Currently open positions
 - Current profit of open positions
 
-## Task Queries
+### 2.4. Task Queries
 - Get all tasks for a given user
 
-### 2.4. Cross-Collection Queries
+### 2.5. Performance Queries
 - Analyst performance
 - Team performance
+- Fund performance
 
 ## 3. Collections (Database Architecture)
 Currently, these *do not* contain denormalized data. I've also made some other concessions for simplicity at this stage, e.g. only using usernames, rather than full names.
@@ -132,7 +145,7 @@ Each Document will be a Ticker, so this is technically a subcollection.
 
 *I felt this one was self-explanatory.*
 
-### Tasks
+### 3.5. Tasks
 | User       | Task                     | Description | Completed? |
 | ---------- | ------------------------ | ----------- | ---------- |
 | wadefletch | Weekly Report Submission | ...         | FALSE      |
@@ -157,6 +170,8 @@ When we get new trade data from Fidelity, this function will take the body of th
 
 ![Trade Ingestion Flowchart](diagrams/build/trade_ingestion.png)
 
+***Note:** I'm using Google Cloud icons, but we'll be accessing all of these tools through Firebase. Same goes for later diagrams.*
+
 #### 4.1.2. Reports
 When an analyst has a new report, we need to collect both the PDF itself and metadata surrounding it: Ticker, Analyst, etc. In it's simplest form, this would require two sequential API calls, one to Cloud Storage with the file, and then one to the Reports Collection with the Metadata, including the URL of the file download.
 
@@ -179,13 +194,52 @@ The cost of this though, is when we update a record, we've also got to update ev
 
 ### 4.3. Output
 In the longer term, I think we can start automating production of some deliverables. A couple ideas:
-- Use report feedback to compile a monthly selection of the best reports.
+- Use report feedback to compile a monthly selection of the best reports, complete with dynamically generated graphs and such.
 - Build report books for exec meetings.
 - Post portfolio updates in Discord at some regular interval.
 - Congratulate analysts who outperform their peers.
 
-## 5. Analytics
-*In this context, "Analytics" refers to tracking the pageviews, button clicks, uploads, logins, etc. within our application, rather than the portfolio analytics we've been doing.*
+## 5. Authentication
+Obviously we're going to be dealing with some sensitive (though not necessarily private) data here, and we dont want everything available to everybody. A major factor in our decision to use Firebase was how [easily it integrates](https://cloud.google.com/identity-platform/docs/web/saml) with [IU's SAML login](https://kb.iu.edu/d/bdag).
 
-## 6. Outstanding Questions
-1. How frequently do we need portfolio performance data updated? I say daily, because intraday is going to be expensive and if you really need intraday, just log in to Fidelity. If we do daily, we can just set up functions that keep everything updated at EOD.
+![IU Login](images/iu_login.png)
+
+Meaning, you'll be able to log in to this platform just like you do Canvas, iGPS, One.IU and every other IU service and we'll have the same protections (2FA through Duo) as the rest of the university.
+
+## 6. Visualization
+The name of the game and one of the big end goals here is visualization.
+
+![d3.js](images/d3js.png)
+
+[D3.js](https://d3js.org/) is the name of the game here, and the prominent frontend charting library *du jour*.
+
+Examples (with code):
+- [Calendar Heatmap](https://observablehq.com/@d3/calendar-view)
+- [Line Chart](https://observablehq.com/@d3/line-chart) (uses Yahoo Finance data)
+- [Candlestick Chart](https://observablehq.com/@d3/candlestick-chart) (also YF)
+- [Bollinger Bands](https://observablehq.com/@d3/bollinger-bands)
+- [Pie Chart](https://observablehq.com/@d3/pie-chart)
+
+I've never worked with d3 (never done any dataviz from scratch) but I've continuously heard good things about it and I'm excited to put it to use here.
+
+## 7. Frontend
+### 7.1. React
+I think React is the right way to go for this project, because it plays so nice with Firebase and is very much the libary of the day.
+
+![Top Frontend Frameworks Chart](images/topfrontendframeworks.png)
+*[Source](https://existek.com/blog/top-front-end-frameworks-2020/)*
+
+I know this adds some degree of complexity over something like [Flask](https://flask.palletsprojects.com/en/1.1.x/) or [Django](https://www.djangoproject.com/), but it allows us to radically simplify auth (Firebase handles [JWTs](https://jwt.io/introduction) <10 lines of code with React) and I think we have more React frontend experience on our team than [Jinja2](https://jinja.palletsprojects.com/en/2.11.x/). 
+
+### 7.2. Tailwind CSS
+![Tailwind CSS Logo](images/tailwind.png)
+
+I'm also a huge fan of [Tailwind CSS](https://tailwindcss.com/). This project (despite the name) almost completely removes the need to write CSS. I'd *highly* encourage you to read through the landing page, it's pretty sick. This is an open source project I contribute to and I'm a big believer and evangelist for it.
+
+I also have access to the [Tailwind UI](https://tailwindui.com/components) component library, which is a little limited at present but is a good resource for what's possible in Tailwind. 
+
+[Here are some examples of familiar UIs (Spotify, Shopify, Netlify, etc.) implemented in Tailwind.](https://github.com/asvny/building-realworld-user-interfaces-using-tailwind)
+
+## 8. Outstanding Questions
+1. How frequently do we need portfolio performance data updated? I say daily, because intraday is going to be expensive and if you really need intraday, just log in to Fidelity. If we do daily, we can just set up functions that keep everything updated at market close.
+2. What are we going to call this thing? We can do better than "Internal Website." Can we give it a "Project X" name?
