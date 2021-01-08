@@ -238,7 +238,7 @@ Examples (with code):
 - [Bollinger Bands](https://observablehq.com/@d3/bollinger-bands)
 - [Pie Chart](https://observablehq.com/@d3/pie-chart)
 
-I've never worked with d3 (never done any dataviz from scratch) but I've continuously heard good things about it and I'm excited to put it to use here.
+I've never worked with D3 (never done any dataviz from scratch) but I've continuously heard good things about it and I'm excited to put it to use here.
 
 ## 7. Frontend
 ### 7.1. React
