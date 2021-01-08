@@ -14,14 +14,14 @@
   - [3.3. Reports](#33-reports)
     - [3.3.1. Feedback Subcollection](#331-feedback-subcollection)
   - [3.4. Historical Data](#34-historical-data)
-  - [Ticker Data](#ticker-data)
-  - [3.5. Tasks](#35-tasks)
+  - [3.5. Ticker Data](#35-ticker-data)
+  - [3.6. Tasks](#36-tasks)
 - [4. Functions](#4-functions)
   - [4.1. Ingestion](#41-ingestion)
     - [4.1.1. Trades](#411-trades)
     - [4.1.2. Reports](#412-reports)
     - [4.1.3. Historical Data](#413-historical-data)
-    - [Ticker Data](#ticker-data-1)
+    - [4.1.4. Ticker Data](#414-ticker-data)
   - [4.2. Data Maintenence](#42-data-maintenence)
   - [4.3. Output](#43-output)
 - [5. Authentication](#5-authentication)
@@ -149,14 +149,14 @@ Each Document will be a Ticker, so this is technically a subcollection.
 
 *I felt this one was self-explanatory.*
 
-### Ticker Data
+### 3.5. Ticker Data
 | Ticker | Company Name          | Exchange |
 | ------ | --------------------- | -------- |
 | AAPL   | Apple Inc.            | NASDAQ   |
 | MSFT   | Microsoft Corporation | NASDAQ   |
 | ...    | ...                   | ...      |
 
-### 3.5. Tasks
+### 3.6. Tasks
 | User       | Task                     | Description | Completed? |
 | ---------- | ------------------------ | ----------- | ---------- |
 | wadefletch | Weekly Report Submission | ...         | FALSE      |
@@ -196,7 +196,7 @@ Currently, our historical data is pulled through the `=GOOGLEFINANCE` function o
 
 ![Historical Data Ingestion Flowchart](diagrams/build/historical_data_ingestion.png)
 
-#### Ticker Data
+#### 4.1.4. Ticker Data
 We'll probably want to refer to companies with their full names and exchanges at some point, not just tickers. Yahoo Finance makes this data available to us via the following endpoint.
 ```
 http://autoc.finance.yahoo.com/autoc?lang=en&query={Ticker}
