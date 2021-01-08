@@ -109,6 +109,7 @@ This super simple schema gives us simplicity with one cost, that users can't car
 | ------------------ | ---------- | ------ | ---------- | ----------- | ------------------------------------------- |
 | RE_INDA_1562889600 | wadefletch | INDA   | 2019-07-12 | https://... | *Feedback Subcollection (see §3.3.1 below)* |
 | ...                | ...        | ...    | ...        | ...         | ...                                         |
+
 *Report ID is RE_{Ticker}_{Epoch form of Date}.*
 
 #### 3.3.1. Feedback Subcollection
