@@ -227,7 +227,7 @@ Meaning, you'll be able to log in to this platform just like you do Canvas, iGPS
 ## 6. Visualization
 The name of the game and one of the big end goals here is visualization.
 
-![d3.js](images/d3js.png)
+![D3.js](images/d3js.png)
 
 [D3.js](https://d3js.org/) is the name of the game here, and the prominent frontend charting library *du jour*.
 
