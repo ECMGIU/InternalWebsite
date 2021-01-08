@@ -6,6 +6,7 @@
   - [2.1. Report Queries](#21-report-queries)
   - [2.2. User Queries](#22-user-queries)
   - [2.3. Trade Queries](#23-trade-queries)
+- [Task Queries](#task-queries)
   - [2.4. Cross-Collection Queries](#24-cross-collection-queries)
 - [3. Collections (Database Architecture)](#3-collections-database-architecture)
   - [3.1. Users](#31-users)
@@ -13,6 +14,7 @@
   - [3.3. Reports](#33-reports)
     - [3.3.1. Feedback Subcollection](#331-feedback-subcollection)
   - [3.4. Historical Data](#34-historical-data)
+  - [Tasks](#tasks)
 - [4. Functions](#4-functions)
   - [4.1. Ingestion](#41-ingestion)
     - [4.1.1. Trades](#411-trades)
@@ -73,6 +75,9 @@ https://www.dataversity.net/how-to-design-schema-for-your-nosql-database/
 - Currently open positions
 - Current profit of open positions
 
+## Task Queries
+- Get all tasks for a given user
+
 ### 2.4. Cross-Collection Queries
 - Analyst performance
 - Team performance
@@ -127,8 +132,26 @@ Each Document will be a Ticker, so this is technically a subcollection.
 
 *I felt this one was self-explanatory.*
 
+### Tasks
+| User       | Task                     | Description | Completed? |
+| ---------- | ------------------------ | ----------- | ---------- |
+| wadefletch | Weekly Report Submission | ...         | FALSE      |
+| ...        | ...                      | ...         | ...        |
+
+*Currently these wil have to be checked off manually by the assignee once completed, I'm not sure how to automate most of them.*
+
+Standard tasks could include:
+- Tagging new trades with relevant reports, analysts, and PM
+- Submitting reports
+
 ## 4. Functions
 ### 4.1. Ingestion
+We're bringing in a lot of data here, from a bunch of different places
+- Financial Data from [Google Finance](https://www.google.com/finance), [Yahoo Finance](https://finance.yahoo.com/), and [Quandl](https://www.quandl.com/)
+- Portfolio Data from [Fidelity](https://www.fidelity.com/)
+- Reports from Analysts
+- Association Data from *(whoever ends up being in charge of this)*
+
 #### 4.1.1. Trades
 When we get new trade data from Fidelity, this function will take the body of the CSV file and write it into individual Documents on the Trades Collection. I already implemented the core logic for this in the [Master Trade Ledger Google Sheet](https://docs.google.com/spreadsheets/d/1hmaPz5sL_8HmIBEJXbW8h6fERes7gXg7QC8KmoGRmjg/edit#gid=112027560).
 
