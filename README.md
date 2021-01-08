@@ -62,10 +62,12 @@ https://www.dataversity.net/how-to-design-schema-for-your-nosql-database/
 - Feedback for a given Report
 
 ### 2.2. User Queries
-- Get current role of a given user
-- Get current team of a given user
+- Get role of a given user
+- Get team of a given user
+- Get dues status of a given user
 - Get all users in a given team
 - Get all users of a given role
+- Get all users with paid/unpaid dues
 
 ### 2.3. Trade Queries
 - Currently open positions
@@ -76,13 +78,16 @@ https://www.dataversity.net/how-to-design-schema-for-your-nosql-database/
 - Team performance
 
 ## 3. Collections (Database Architecture)
+Currently, these *do not* contain denormalized data. I've also made some other concessions for simplicity at this stage, e.g. only using usernames, rather than full names.
+
+
 ### 3.1. Users
-| IU Username | Role    | Team           |
-| ----------- | ------- | -------------- |
-| wadefletch  | tpm     | technology     |
-| samlicht    | analyst | domesticequity |
-| apeddi      | analyst | sustainable    |
-| ...         | ...     | ....           |
+| IU Username | Role    | Team           | Dues  |
+| ----------- | ------- | -------------- | ----- |
+| wadefletch  | tpm     | technology     | TRUE  |
+| samlicht    | analyst | domesticequity | FALSE |
+| apeddi      | analyst | sustainable    | TRUE  |
+| ...         | ...     | ....           | ...   |
 
 This super simple schema gives us simplicity with one cost, that users can't carry multiple roles/teams. Obviously there are exceptions to this rule (me until not long ago) but I believe that's an acceptable limitation. The increase in complexity and development time moving to a Many-to-One model here doesn't outweight the minimal benefit.
 
