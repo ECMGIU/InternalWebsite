@@ -20,8 +20,8 @@ with Diagram(filename="build/report_ingestion", show=False, graph_attr=graph_att
     func = Functions("Report Ingestion Function")
     discord = Custom("Discord", "../custom_icons/discord.png")
 
-    React("Next.js Frontend") >> func >> Storage("Reports")
-    discord >> func >> Firestore("Reports")
+    React("Next.js Frontend") >> func >> Storage("Reports (Files)")
+    discord >> func >> Firestore("Reports (Metadata)")
 
 with Diagram(
     filename="build/historical_data_ingestion", show=False, graph_attr=graph_attr

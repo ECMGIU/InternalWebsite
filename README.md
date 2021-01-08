@@ -1,4 +1,5 @@
 # ECMG Internal Website Planning <!-- omit in toc -->
+*Wade Fletcher, 2021*
 
 - [1. Stack](#1-stack)
 - [2. Querys](#2-querys)
@@ -20,6 +21,7 @@
   - [4.2. Data Maintenence](#42-data-maintenence)
   - [4.3. Output](#43-output)
 - [5. Analytics](#5-analytics)
+- [Outstanding Questions](#outstanding-questions)
 
 ## 1. Stack
 - Frontend: React ([Next.js](https://nextjs.org/))
@@ -74,6 +76,8 @@ https://www.dataversity.net/how-to-design-schema-for-your-nosql-database/
 
 ## 3. Collections (Database Architecture)
 ### 3.1. Users
+- IU Username
+
 ### 3.2. Teams
 ### 3.3. Trades
 ### 3.4. Reports
@@ -102,11 +106,19 @@ Currently, our historical data is pulled through the =GOOGLEFINANCE function on 
 ![Historical Data Ingestion Flowchart](diagrams/build/historical_data_ingestion.png)
 
 ### 4.2. Data Maintenence
-Since we've chosen NoSQL, we're going to carry a lot of redundant data through the structure. *This is intentional.* What this means, is we're going to denormalize (duplicate) data across different tables. For those of you with a strong relational background (K204, anyone) this sounds egregious. *I know.* What this allows though is an extremely simplified set of API calls that are incredibly performant. It's actually been used for a long time to achieve better performance in SQL queries, by minimizing the JOINs that occur on any particular request.
+Since we've chosen NoSQL, we're going to carry a lot of redundant data through the structure. *This is intentional.* What this means, is we're going to denormalize (duplicate) data across different tables. For those of you with a strong relational background (K204, anyone?) this sounds egregious. *I know.* What this allows though is an extremely simplified set of API calls that are incredibly performant. It's actually been used for a long time to achieve better performance in SQL queries, by minimizing the JOINs that occur on any particular request.
 
 The cost of this though, is when we update a record, we've also got to update everywhere else that data is replicated. We'll do this through another set of cloud functions, one for each [Collection](#3-collections-database-architecture).
 
 ### 4.3. Output
+In the longer term, I think we can start automating production of some deliverables. A couple ideas:
+- Use report feedback to compile a monthly selection of the best reports.
+- Build report books for exec meetings.
+- Post portfolio updates in Discord at some regular interval.
+- Congratulate analysts who outperform their peers.
 
 ## 5. Analytics
-*In this context, "Analytics" refers to tracking the pageviews, button clicks, uploads, logins, etc. within our application, rather than the portfolio analytics we've been doing.*
+> In this context, "Analytics" refers to tracking the pageviews, button clicks, uploads, logins, etc. within our application, rather than the portfolio analytics we've been doing.
+
+## Outstanding Questions
+1. How frequently do we need portfolio performance data updated? I say daily, because intraday is going to be expensive and if you really need intraday, just log in to Fidelity. If we do daily, we can just set up functions that keep everything updated at EOD.
