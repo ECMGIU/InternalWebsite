@@ -8,5 +8,4 @@ exports.historical_data = require("./historical_data");
 exports.trades = require("./trades");
 exports.tickers = require("./tickers");
 
-
 // As additional functions are added, they'll need to be linked here.
