@@ -9,7 +9,7 @@ module.exports = {
       './public/index.html',
     ],
   },
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'media',
   theme: {
     colors: {
       gray: colors.trueGray,
