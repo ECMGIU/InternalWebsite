@@ -1,29 +1,32 @@
-import PrivateRoute from 'components/PrivateRoute';
-import { AuthProvider } from 'lib/auth';
-import HomePage from 'pages/home';
-import LoginPage from 'pages/login';
-import NotFound from 'pages/notfound';
+import { auth } from 'lib/firebase';
+import HomePage from 'pages/HomePage';
+import LoginPage from 'pages/LoginPage';
+import NotFoundPage from 'pages/NotFoundPage';
+import ReportsPage from 'pages/ReportsPage';
 import { React } from 'react';
 import ReactDOM from 'react-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import 'styles/base.css';
 import 'styles/components.css';
 import 'styles/utilities.css';
 
-const App = () => (
-  <AuthProvider>
+const App = () => {
+  const [user] = useAuthState(auth);
+
+  return user ? (
     <BrowserRouter>
-      <div>
-        <Switch>
-          <PrivateRoute exact path="/" component={HomePage} />
-          <Route exact path="/login" component={LoginPage} />
-          <Route component={NotFound} />
-          {/* Additional routes should be added for additional pages. */}
-        </Switch>
-      </div>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/reports" component={ReportsPage} />
+        <Route component={NotFoundPage} />
+        {/* Additional routes should be added for additional pages. */}
+      </Switch>
     </BrowserRouter>
-  </AuthProvider>
-);
+  ) : (
+    <LoginPage />
+  );
+};
 
 ReactDOM.render(
   <App />,
