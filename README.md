@@ -23,7 +23,7 @@
     - [4.1.3. Historical Data](#413-historical-data)
     - [4.1.4. Ticker Data](#414-ticker-data)
   - [4.2. Data Maintenence](#42-data-maintenence)
-    - [Dues Marking](#dues-marking)
+    - [4.2.1. Dues Marking](#421-dues-marking)
   - [4.3. Output](#43-output)
 - [5. Authentication](#5-authentication)
 - [6. Visualization](#6-visualization)
@@ -210,7 +210,7 @@ Since we've chosen NoSQL, we're going to carry a lot of redundant data through t
 
 The cost of this though, is when we update a Document, we've also got to update everywhere else that data is replicated. We'll do this through another set of cloud functions, one for each [Collection](#3-collections-database-architecture).
 
-#### Dues Marking
+#### 4.2.1. Dues Marking
 When a member successfully pays dues on Stripe, we can set up a webhook URL that will get hit. That webhook URL will point to this function, which will mark them as dues paid in their User Document.
 
 ### 4.3. Output
