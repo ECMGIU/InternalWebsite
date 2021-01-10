@@ -12,8 +12,8 @@ module.exports = {
   darkMode: 'media',
   theme: {
     colors: {
-      gray: colors.trueGray,
       ...colors,
+      gray: colors.trueGray,
     },
     extend: {},
   },
