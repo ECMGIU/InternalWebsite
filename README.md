@@ -151,11 +151,12 @@ Each Document will be a Ticker, so this is technically a subcollection.
 *I felt this one was self-explanatory.*
 
 ### 3.5. Ticker Data
-| Ticker | Company Name          | Exchange |
-| ------ | --------------------- | -------- |
-| AAPL   | Apple Inc.            | NASDAQ   |
-| MSFT   | Microsoft Corporation | NASDAQ   |
-| ...    | ...                   | ...      |
+| Ticker | Company Name          | Exchange | Type   |
+| ------ | --------------------- | -------- | ------ |
+| AAPL   | Apple Inc.            | NASDAQ   | Equity |
+| MSFT   | Microsoft Corporation | NASDAQ   | Equity |
+| QQQ    | Invesco QQQ Trust     | NASDAQ   | ETF    |
+| ...    | ...                   | ...      | ...    |
 
 ### 3.6. Tasks
 | User       | Task                     | Description | Completed? |
@@ -178,7 +179,7 @@ We're bringing in a lot of data here, from a bunch of different places
 - Association Data from *(whoever ends up being in charge of this)*
 
 #### 4.1.1. Trades
-When we get new trade data from Fidelity, this function will take the body of the CSV file and write it into individual Documents on the Trades Collection. I already implemented the core logic for this in the [Master Trade Ledger Google Sheet](https://docs.google.com/spreadsheets/d/1hmaPz5sL_8HmIBEJXbW8h6fERes7gXg7QC8KmoGRmjg/edit#gid=112027560).
+When we get new trade data from Fidelity, this function will take the body of the CSV file and write it into individual Documents on the Trades Collection. I already implemented the core logic for this in the [Master Trade Ledger Google Sheet](https://docs.google.com/spreadsheets/d/1hmaPz5sL_8HmIBEJXbW8h6fERes7gXg7QC8KmoGRmjg/edit#gid=112027560). It's not clear whether we'll be able to automate pulling from Fidelity (that would be ideal) or whether we'll need a TextArea or similar which can be pasted into.
 
 ![Trade Ingestion Flowchart](docs/diagrams/build/trade_ingestion.png)
 
