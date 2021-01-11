@@ -1,4 +1,4 @@
-# ECMG Internal Website Planning <!-- omit in toc -->
+# ECMG Internal Website <!-- omit in toc -->
 *Wade Fletcher, 2021*
 
 - [1. Tech Stack](#1-tech-stack)
@@ -115,11 +115,11 @@ Currently, these *do not* contain denormalized data. I've also made some other c
 This super simple schema gives us simplicity with one cost, that users can't carry multiple roles/teams. Obviously there are exceptions to this rule (me until not long ago) but I believe that's an acceptable limitation. The increase in complexity and development time moving to a Many-to-One model here doesn't outweight the minimal benefit.
 
 ### 3.2. Trades
-| Trade ID          | Quarter | Date       | Ticker | Action | Qty | Price | Commission | Fees | Amount  |
-| ----------------- | ------- | ---------- | ------ | ------ | --- | ----- | ---------- | ---- | ------- |
-| TR_IAU_1562889600 | Q3 2019 | 2019-07-12 | IAU    | BUY    | 10  | 13.52 |            |      | -135.25 |
-| TR_IAU_1578268800 | Q1 2020 | 2020-01-06 | IAU    | BUY    | 4   | 15.07 |            |      | -60.28  |
-| ...               | ...     | ...        | ...    | ...    | ... | ...   | ...        | ...  | ...     |
+| Trade ID          | Date       | Ticker | Action | Qty | Price | Commission | Fees | Amount  |
+| ----------------- | ---------- | ------ | ------ | --- | ----- | ---------- | ---- | ------- |
+| TR_IAU_1562889600 | 2019-07-12 | IAU    | BUY    | 10  | 13.52 |            |      | -135.25 |
+| TR_IAU_1578268800 | 2020-01-06 | IAU    | BUY    | 4   | 15.07 |            |      | -60.28  |
+| ...               | ...        | ...    | ...    | ... | ...   | ...        | ...  | ...     |
 
 *Trade ID is TR_{Ticker}_{Epoch form of Date}.*
 
