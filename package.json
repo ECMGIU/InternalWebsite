@@ -22,7 +22,8 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.js src/**/*.jsx"
+    "lint": "eslint src/**/*.js src/**/*.jsx",
+    "deploy": "firebase deploy --token \"$FIREBASE_TOKEN\""
   },
   "eslintConfig": {
     "extends": [
