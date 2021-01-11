@@ -1,4 +1,4 @@
-# ECMG Internal Website Planning <!-- omit in toc -->
+# ECMG Internal Website <!-- omit in toc -->
 *Wade Fletcher, 2021*
 
 - [1. Tech Stack](#1-tech-stack)
