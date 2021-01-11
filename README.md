@@ -1,5 +1,5 @@
 # Project Dalio <!-- omit in toc -->
-*Wade Fletcher, 2021*
+*Wade Fletcher 2021*
 
 - [1. Tech Stack](#1-tech-stack)
 - [2. Queries](#2-queries)
