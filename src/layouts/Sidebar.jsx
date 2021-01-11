@@ -10,7 +10,7 @@ const Sidebar = ({ children }) => {
   return (
     <div className="flex items-strech h-screen p-6">
       <div className="w-72 bg-white border-black border flex flex-col">
-        <div className="font-extrabold text-xl placeholder text-black">ECMG Internal Website</div>
+        <div className="font-extrabold text-xl placeholder text-black">Project Dalio</div>
         <div className="flex-1 p-6">
           <ul className="space-y-4">
             <li><Link to="/">Dashboard</Link></li>
