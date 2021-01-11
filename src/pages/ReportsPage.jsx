@@ -1,27 +1,19 @@
+import ReportCard from 'components/ReportCard';
 import Sidebar from 'layouts/Sidebar';
 import { firestore } from 'lib/firebase';
 import React from 'react';
-import { useCollection } from 'react-firebase-hooks/firestore';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 const ReportsPage = () => {
-  const [value, loading, error] = useCollection(firestore.collection('reports'));
+  const [reports, loading, error] = useCollectionData(firestore.collection('reports'), { idField: 'id' });
 
   return (
     <Sidebar>
-      <div>
-        {error && <strong>Error: {JSON.stringify(error)}</strong>}
-        {loading && <span>Collection: Loading...</span>}
-        {value && (
-          <span>
-            Collection:{' '}
-            {value.docs.map((doc) => (
-              <React.Fragment key={doc.id}>
-                {JSON.stringify(doc.data())},{' '}
-              </React.Fragment>
-            ))}
-          </span>
-        )}
-      </div>
+      <h1 className="title">Reports</h1>
+
+      {error && <strong>Error: {JSON.stringify(error)}</strong>}
+      {loading && <span>Loading...</span>}
+      {reports && reports.map((r) => <ReportCard key={r.id} report={r} />)}
     </Sidebar>
   );
 };

@@ -128,15 +128,15 @@ This super simple schema gives us simplicity with one cost, that users can't car
 *Fees are only incurred on SELL actions.*
 
 ### 3.3. Reports
-| Report ID          | User       | Ticker | Timestamp  | URL         | Feedback                                    |
-| ------------------ | ---------- | ------ | ---------- | ----------- | ------------------------------------------- |
-| RE_INDA_1562889600 | wadefletch | INDA   | 2019-07-12 | https://... | *Feedback Subcollection (see §3.3.1 below)* |
-| ...                | ...        | ...    | ...        | ...         | ...                                         |
+| Report ID          | User       | Ticker | Timestamp  | Title                  | URL         | Feedback                                    |
+| ------------------ | ---------- | ------ | ---------- | ---------------------- | ----------- | ------------------------------------------- |
+| RE_INDA_1562889600 | wadefletch | INDA   | 2019-07-12 | Opportunities in India | https://... | *Feedback Subcollection (see §3.3.1 below)* |
+| ...                | ...        | ...    | ...        | ...                    | ...         | ...                                         |
 
 *Report ID is RE_{Ticker}_{Epoch form of Date}.*
 
 #### 3.3.1. Feedback Subcollection
-| User     | Timestamp  | Comment                         |
+| User     | Timestamp  | Body                            |
 | -------- | ---------- | ------------------------------- |
 | sarnagar | 2019-07-12 | I've never seen a worse report. |
 | ...      | ...        | ...                             |

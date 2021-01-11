@@ -1,18 +1,18 @@
 import Sidebar from 'layouts/Sidebar';
-import { auth } from 'lib/firebase';
 import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 
-const HomePage = () => {
-  const [user] = useAuthState(auth);
-
-  return (
-    <Sidebar>
-      <div className="text-5xl font-bold">
-        Home Page!
-      </div>
-    </Sidebar>
-  );
-};
+const HomePage = () => (
+  <Sidebar>
+    <h1 className="title">Dashboard</h1>
+    <div className="grid grid-cols-4 gap-6" style={{ height: '36rem' }}>
+      <div className="border border-black placeholder centered">Portfolio Performance</div>
+      <div className="border border-black placeholder centered">Index Performance</div>
+      <div className="border border-black placeholder centered">Reports Submitted</div>
+      <div className="border border-black placeholder centered">Fourth Metric</div>
+      <div className="row-span-2 border border-black placeholder centered">Recent Reports</div>
+      <div className="col-span-3 row-span-2 border border-black placeholder centered">Current Holdings Table</div>
+    </div>
+  </Sidebar>
+);
 
 export default HomePage;

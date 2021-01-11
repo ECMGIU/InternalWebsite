@@ -2,6 +2,7 @@ import 'firebase/analytics';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import 'firebase/performance';
 
 // These look like they should be secured, but that's not needed
 const firebaseConfig = {
@@ -17,6 +18,5 @@ firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
-
-// Enable Analytics
-firebase.analytics();
+export const perf = firebase.performance();
+export const analytics = firebase.analytics();
