@@ -1,0 +1,7 @@
+.trades-table {
+    @apply border-collapse;
+}
+
+.trades-table td, .trades-table th {
+    @apply border border-black px-3 py-1 text-left;
+}

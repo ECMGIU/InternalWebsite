@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   purge: {
@@ -11,11 +12,14 @@ module.exports = {
   },
   darkMode: 'media',
   theme: {
-    colors: {
-      ...colors,
-      gray: colors.trueGray,
+    extend: {
+      fontFamily: {
+        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+      },
+      colors: {
+        gray: colors.trueGray,
+      },
     },
-    extend: {},
   },
   variants: {
     extend: {},
