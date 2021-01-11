@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: 14
       - name: Install Depedencies
-        run: npm ci
+        run: npm ci --also=dev
       - name: Build
         run: npm run build
       - name: Deploy to Firebase
