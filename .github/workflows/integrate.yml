@@ -13,10 +13,10 @@ jobs:
         with:
           node-version: 14
       - name: Install Depedencies
-        run: npm ci
+        run: npm ci --also=dev
       - name: Code Quality Checks
         run: npm run lint
       - name: Tests
-        run: npm run test --passWithNoTests
+        run: npm run test
       - name: Build
         run: npm run build
