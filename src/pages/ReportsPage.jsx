@@ -13,6 +13,7 @@ const ReportsPage = () => {
 
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
       {loading && <span>Loading...</span>}
+
       {reports && reports.map((r) => <ReportCard key={r.id} report={r} />)}
     </Sidebar>
   );
