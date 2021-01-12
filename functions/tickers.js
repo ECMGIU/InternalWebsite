@@ -18,7 +18,7 @@ exports.ingestion = functions.https.onRequest((request, response) => {
         const result = res.data.ResultSet.Result[0];
 
         // Make sure we've got the exact ticker we want, and it actually exists
-        if (result.symbol === ticker.toUpperCase()) {
+        if (result && result.symbol === ticker.toUpperCase()) {
           // Save the new data in the 'tickers' collection
           tickerRef.set({
             ticker: result.symbol,
