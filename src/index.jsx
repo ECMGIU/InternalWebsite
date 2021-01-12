@@ -4,6 +4,7 @@ import NotFoundPage from 'pages/errors/NotFoundPage';
 import FidelityInputPage from 'pages/FidelityInputPage';
 import HomePage from 'pages/HomePage';
 import LoginPage from 'pages/LoginPage';
+import PortfolioPage from 'pages/PortfolioPage';
 import ReportsPage from 'pages/ReportsPage';
 import TradesPage from 'pages/TradesPage';
 import { React } from 'react';
@@ -21,6 +22,7 @@ const App = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route exact path="/portfolio" component={PortfolioPage} />
         <Route exact path="/reports" component={ReportsPage} />
         <Route exact path="/trades" component={TradesPage} />
         <Route exact path="/fidelity" component={FidelityInputPage} />

@@ -14,11 +14,11 @@ const Sidebar = ({ children }) => {
         <div className="flex-1 p-6">
           <ul className="space-y-4">
             <li><Link to="/">Dashboard</Link></li>
+            <li><Link to="/portfolio">Portfolio</Link></li>
             <li><Link to="/reports">Reports</Link></li>
             <li><Link to="/trades">Trades</Link></li>
             <li><Link to="/fidelity">Fidelity Input</Link></li>
             <li><Link to="/chat">Chat</Link></li>
-
           </ul>
         </div>
         <div className="w-full flex justify-between">
