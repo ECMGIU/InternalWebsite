@@ -1,9 +1,6 @@
 const functions = require("firebase-functions");
 const axios = require("axios");
-const admin = require("firebase-admin");
-
-admin.initializeApp();
-const db = admin.firestore();
+const { db } = require("./shared");
 
 exports.ingestion = functions.https.onRequest((request, response) => {
   // This is confusing syntax, but its synonymous to the following:
