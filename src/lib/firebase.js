@@ -12,6 +12,7 @@ const firebaseConfig = {
   storageBucket: 'iu-ecmg-internal.appspot.com',
   messagingSenderId: '298651320163',
   appId: '1:298651320163:web:dcd23b45bfb169cd795d56',
+  measurementId: 'G-V1SWZVH57T',
 };
 
 firebase.initializeApp(firebaseConfig);
