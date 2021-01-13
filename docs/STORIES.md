@@ -30,9 +30,9 @@
 ## Event Management
 - As a member of ECMG, I want to see upcoming events. (Google Calendar Integration?)
 - As a member of ECMG, I want to join an event by clicking an attached Zoom link.
-- As Exec, I want to create an event.
-- As Exec, I want to record attendance at an event. (Attendance code?)
-- As Exec, I want to attach resources in advance of an event.
+- As a member of Exec, I want to create an event.
+- As a member of Exec, I want to record attendance at an event. (Attendance code?)
+- As a member of Exec, I want to attach resources in advance of an event.
 
 ## Historical Data
 - As a member of ECMG, I want to view historical performance data for securities in our portfolio.
