@@ -38,6 +38,6 @@
 - As a member of ECMG, I want to view historical performance data for securities in our portfolio.
 
 ## Compliance
-- As a compliance manager, I want to view expense documentation 
-- As a compliance manager, I want to have access to a log showing permission changes
-- As a compliance manager, I want to view a log of exec-level actions taken
+- As a compliance manager, I want to view expense documentation.
+- As a compliance manager, I want to view a log showing permission changes.
+- As a compliance manager, I want to view a log of Exec-level actions taken.
