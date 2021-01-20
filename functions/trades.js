@@ -10,8 +10,6 @@ exports.ingestion = functions.https.onRequest((request, response) => {
 });
 
 exports.portfolio = functions.https.onRequest(async (request, response) => {
-  response.set({ "Access-Control-Allow-Origin": "*" });
-
   const trades = await tradesRef.get();
   const portfolio = {};
 
