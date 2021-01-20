@@ -265,4 +265,4 @@ I also have access to the [Tailwind UI](https://tailwindui.com/components) compo
 
 ## 8. Outstanding Questions
 1. How frequently do we need portfolio performance data updated? I say daily, because intraday is going to be expensive and if you really need intraday, just log in to Fidelity. If we do daily, we can just set up functions that keep everything updated at market close.
-~~2. What are we going to call this thing? We can do better than "Internal Website." Can we give it a "Project X" name?~~ Sarthak and I have elected to call this "Project Dalio" for the time being, after [Ray Dalio](https://en.wikipedia.org/wiki/Ray_Dalio) and his [data-driven principles](https://www.toptal.com/finance/business-plan-consultants/ray-dalio-principles).
+2. ~~What are we going to call this thing? We can do better than "Internal Website." Can we give it a "Project X" name?~~ Sarthak and I have elected to call this "Project Dalio" for the time being, after [Ray Dalio](https://en.wikipedia.org/wiki/Ray_Dalio) and his [data-driven principles](https://www.toptal.com/finance/business-plan-consultants/ray-dalio-principles).
