@@ -8,9 +8,9 @@ const Sidebar = ({ children }) => {
   const [user] = useAuthState(auth);
 
   return (
-    <div className="flex items-strech h-screen p-6">
-      <div className="w-72 bg-white border-black border flex flex-col">
-        <div className="font-extrabold text-xl placeholder text-black">Project Dalio</div>
+    <div className="flex h-screen p-6 items-strech">
+      <div className="flex flex-col bg-white border border-black w-72">
+        <div className="text-xl font-extrabold text-black placeholder">Project Dalio</div>
         <div className="flex-1 p-6">
           <ul className="space-y-4">
             <li><Link to="/">Dashboard</Link></li>
@@ -21,13 +21,13 @@ const Sidebar = ({ children }) => {
             <li><Link to="/chat">Chat</Link></li>
           </ul>
         </div>
-        <div className="w-full flex justify-between">
-          <div className="placeholder text-black">{user.email}</div>
-          <button type="button" onClick={() => auth.signOut()} className="placeholder text-black">Logout</button>
+        <div className="flex justify-between w-full">
+          <div className="text-black placeholder">{user.email}</div>
+          <button type="button" onClick={() => auth.signOut()} className="text-black placeholder">Logout</button>
         </div>
       </div>
 
-      <div className="pl-6 flex-1">{children}</div>
+      <div className="flex-1 pl-6">{children}</div>
     </div>
   );
 };

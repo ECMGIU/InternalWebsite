@@ -15,7 +15,7 @@ const TradesPage = () => {
         {loading && 'Loading...'}
 
         {trades && (
-          <div className="flex-1 inline-block h-full overflow-y-auto pr-2">
+          <div className="flex-1 inline-block h-full pr-2 overflow-y-auto">
             <table className="trades-table">
               <thead>
                 <tr>

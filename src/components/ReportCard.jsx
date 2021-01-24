@@ -8,9 +8,9 @@ const ReportCard = ({ report }) => {
   const [feedback] = useCollectionData(firestore.collection('reports').doc(report.id).collection('feedback'), { idField: 'id' });
 
   return (
-    <div className="mb-4 max-w-2xl">
-      <a href={report.url} className="block border-black border">
-        <div className="p-2 flex space-x-2">
+    <div className="max-w-2xl mb-4">
+      <a href={report.url} className="block border border-black">
+        <div className="flex p-2 space-x-2">
           <div className="font-extrabold">{report.ticker}</div>
           <div className="flex-1">{report.title}</div>
           <div>{report.user}</div>
@@ -18,7 +18,7 @@ const ReportCard = ({ report }) => {
       </a>
       {feedback && feedback.length > 0 && feedback.map((f) => (
         <div>
-          <div className="border-black border text-sm -mt-px ml-6 py-1 px-2 inline-block">
+          <div className="inline-block px-2 py-1 ml-6 -mt-px text-sm border border-black">
             <span className="font-bold">{f.user}</span> {f.body}
           </div>
         </div>
