@@ -31,20 +31,23 @@ const ChatPage = () => {
   return (
     <Sidebar>
       <h1 className="title">Chat</h1>
-      <div className="h-full flex flex-col w-2/3">
-        <div className="chat-container flex-1 overflow-y-scroll">
-          {messages && messages.map((m) => (
-            <div className="flex space-x-2">
-              <div className="font-bold">{m.user}</div>
-              <div className="flex-1">{m.text}</div>
-              <div className="text-gray-500">{m.createdAt.toDate().toLocaleTimeString()}</div>
-            </div>
-          ))}
+      <div className="flex flex-col w-2/3 h-full">
+        <div className="flex-1 overflow-y-scroll chat-container">
+          {messages
+            && messages.map((m) => (
+              <div className="flex space-x-2">
+                <div className="font-bold">{m.user}</div>
+                <div className="flex-1">{m.text}</div>
+                <div className="text-gray-500">{m.createdAt.toDate().toLocaleTimeString()}</div>
+              </div>
+            ))}
           <span ref={scrollRef} />
         </div>
         <form onSubmit={sendMessage} className="flex pt-2">
-          <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="message" className="flex-1 border-black border px-1 focus:outline-none" />
-          <button type="submit" disabled={!formValue} className="button bg-black text-white">Send</button>
+          <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="message" className="flex-1 px-1 border border-black focus:outline-none" />
+          <button type="submit" disabled={!formValue} className="text-white bg-black button">
+            Send
+          </button>
         </form>
       </div>
     </Sidebar>
