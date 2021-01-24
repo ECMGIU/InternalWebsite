@@ -32,7 +32,7 @@ const ChatPage = () => {
     <Sidebar>
       <h1 className="title">Chat</h1>
       <div className="flex flex-col w-2/3 h-full">
-        <div className="flex-1 overflow-y-scroll chat-container">
+        <div className="flex-1 overflow-y-scroll chat-scroll">
           {messages
             && messages.map((m) => (
               <div className="flex space-x-2">
