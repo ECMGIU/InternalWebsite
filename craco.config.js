@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const { ESLINT_MODES } = require('@craco/craco');
 
 module.exports = {
