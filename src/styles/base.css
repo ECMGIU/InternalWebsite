@@ -2,3 +2,7 @@
 
 /* Fonts */
 @import url('https://rsms.me/inter/inter.css');
+
+* {
+    @apply focus:outline-none;
+}
