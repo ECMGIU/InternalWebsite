@@ -18,9 +18,17 @@ Project Dalio is the [data warehouse](https://en.wikipedia.org/wiki/Data_warehou
 2. Install packages with npm
 
    `npm install`
-  
-3. Start the local development server and appropriate firebase emulators. **Be careful: we haven't gotten the database distinctions worked out yet, meaning you could be working with the production database.**
+   
+3. Install the Firebase CLI
+
+   `npm install -g firebase-tools`
+
+4. Start the local development server. **Be careful: we haven't gotten the database distinctions worked out yet, meaning you could be working with the production database.**
 
    `npm run start`
    
-4. If you use VSCode, you should be prompted to install recommended extensions, and there are a few workspace settings defined in `.vscode`. I (Wade) haven't tested this, so I'm unsure if it works. Hopefully it does. If it doesn't you can just look at the files and make the changes manually.
+5. *Optional if you're not working on functions.* If need be, **in a second terminal** start the firebase emulators.
+
+   `npm run emulators`
+   
+6. If you use VSCode, you should be prompted to install recommended extensions, and there are a few workspace settings defined in `.vscode`. I (Wade) haven't tested this, so I'm unsure if it works. Hopefully it does. If it doesn't you can just look at the files and make the changes manually.

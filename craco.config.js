@@ -1,3 +1,5 @@
+const { ESLINT_MODES } = require('@craco/craco');
+
 module.exports = {
   style: {
     postcss: {
@@ -7,5 +9,8 @@ module.exports = {
         require('autoprefixer'),
       ],
     },
+  },
+  eslint: {
+    mode: ESLINT_MODES.file,
   },
 };
