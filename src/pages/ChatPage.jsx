@@ -1,21 +1,24 @@
 // https://github.com/fireship-io/react-firebase-chat/blob/master/src/App.js
 
-import ChannelPicker from 'components/chat/ChannelPicker';
-import MessageStream from 'components/chat/MessageStream';
+import ChannelSelect from 'components/chat/ChannelSelect';
+import MessageInput from 'components/chat/MessageInput';
+import MessageList from 'components/chat/MessageList';
 import Sidebar from 'layouts/Sidebar';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 const ChatPage = () => {
+  const scrollRef = useRef();
   const [channel, setChannel] = useState('main');
 
   return (
     <Sidebar>
       <div className="flex flex-col w-2/3 h-full">
         <h1 className="title">Chat</h1>
-        <ChannelPicker active={channel} callback={setChannel} />
+        <ChannelSelect active={channel} onSelect={setChannel} />
         <div className="flex-1 mt-4">
-          <MessageStream channel={channel} />
+          <MessageList channel={channel} scrollRef={scrollRef} />
         </div>
+        <MessageInput channel={channel} onSubmit={() => { scrollRef.current.scrollIntoView({ behavior: 'smooth' }); }} />
       </div>
     </Sidebar>
   );
