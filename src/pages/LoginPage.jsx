@@ -12,9 +12,9 @@ const signInWithIU = () => {
 };
 
 const LoginPage = () => (
-  <div className="h-screen w-screen flex flex-col items-center justify-center text-center">
+  <div className="flex flex-col items-center justify-center w-screen h-screen text-center">
     <div>🤠 <br />Woah there cowboy! <br />You&apos;re not logged in.</div>
-    <button type="button" onClick={signInWithGoogle} className="button bg-black text-white m-4">Sign in with Google</button>
+    <button type="button" onClick={signInWithGoogle} className="m-4 text-white bg-black button">Sign in with Google</button>
   </div>
 );
 

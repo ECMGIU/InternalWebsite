@@ -84,9 +84,9 @@ const FidelityInputPage = () => {
       <h1 className="title">Fidelity Data Input</h1>
 
       <form onSubmit={sendLines}>
-        <textarea value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="paste data here" className="w-full h-80 border-black border p-2 focus:outline-none" />
-        <div className="flex space-x-4 items-center text-gray-500">
-          <button type="submit" disabled={!formValue} className="button bg-black text-white">Upload</button>
+        <textarea value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="paste data here" className="w-full p-2 border border-black h-80 focus:outline-none" />
+        <div className="flex items-center text-gray-500 space-x-4">
+          <button type="submit" disabled={!formValue} className="text-white bg-black button">Upload</button>
           <div className={status === 'Done' ? 'text-green-600' : ''}>{status}</div>
         </div>
       </form>
