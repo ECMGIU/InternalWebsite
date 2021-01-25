@@ -12,7 +12,9 @@ const MessageList = ({ channel, scrollRef }) => {
 
   return (
     <div className="h-full overflow-y-scroll chat-scroll">
-      {messages && messages.map((m) => <Message message={m} />)}
+      {messages && messages.map((m) => (
+        <Message key={m.id} author={m.user} text={m.text} createdAt={m.createdAt} />
+      ))}
       <span ref={scrollRef} />
     </div>
   );
