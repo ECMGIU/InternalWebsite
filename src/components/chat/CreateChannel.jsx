@@ -28,6 +28,7 @@ const CreateChannel = () => {
             name="channelName"
             value={channelName}
             onChange={(e) => { setChannelName(e.target.value); }}
+            onBlur={(e) => setEditing(false)}
             placeholder="channel name"
           />
           <button type="submit">+</button>
