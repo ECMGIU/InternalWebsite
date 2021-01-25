@@ -2,6 +2,7 @@ import { auth, firestore } from 'lib/firebase';
 import PropTypes from 'prop-types';
 import React, { useRef, useState } from 'react';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import Linkify from 'react-linkify';
 
 const MessageStream = ({ channel }) => {
   const scrollRef = useRef();
@@ -31,7 +32,7 @@ const MessageStream = ({ channel }) => {
         {messages && messages.map((m) => (
           <div key={m.id} className="flex space-x-2">
             <div className="font-bold">{m.user}</div>
-            <div className="flex-1">{m.text}</div>
+            <div className="flex-1"><Linkify>{m.text}</Linkify></div>
             {m.createdAt && (<div className="w-40 text-right text-gray-500">{m.createdAt.toDate().toLocaleTimeString()}</div>)}
           </div>
         ))}
