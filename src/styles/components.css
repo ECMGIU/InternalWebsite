@@ -1,7 +1,7 @@
 @import 'tailwindcss/components';
 
 @import './components/button.css';
-@import './components/chat-container.css';
+@import './components/chat-scroll.css';
 @import './components/placeholder.css';
 @import './components/trades-table.css';
 @import './components/headings.css';
