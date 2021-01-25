@@ -1,3 +1,15 @@
+# ProjectDalio User Stories <!-- omit in toc -->
+*Nicholas Jager and Wade Fletcher, 2021*
+
+
+- [Report Management](#report-management)
+- [Portfolio Management + Visualization](#portfolio-management--visualization)
+- [User Management](#user-management)
+- [Event Management](#event-management)
+- [Historical Data](#historical-data)
+- [Compliance](#compliance)
+
+
 ## Report Management
 - As a member of ECMG, I want to know some information about the stock's performance between the posting of the report and the time of viewing.
 - As an Analyst, I want to upload my weekly report.
@@ -27,6 +39,7 @@
 - As a member of Exec, I want to search and filter Analysts by performance metrics, including: # of reports, performance of recommendations, quality of report, and attendance.
 - As a member of Exec, I want to know the dues payment status of organization members. 
 
+
 ## Event Management
 - As a member of ECMG, I want to see upcoming events. (Google Calendar Integration?)
 - As a member of ECMG, I want to join an event by clicking an attached Zoom link.
@@ -34,8 +47,10 @@
 - As a member of Exec, I want to record attendance at an event. (Attendance code?)
 - As a member of Exec, I want to attach resources in advance of an event.
 
+
 ## Historical Data
 - As a member of ECMG, I want to view historical performance data for securities in our portfolio.
+
 
 ## Compliance
 - As a compliance manager, I want to view expense documentation.
