@@ -27,8 +27,8 @@ const CreateChannel = () => {
           <AutosizeInput
             name="channelName"
             value={channelName}
-            onChange={(e) => { setChannelName(e.target.value); }}
-            onBlur={(e) => setEditing(false)}
+            onChange={(e) => setChannelName(e.target.value)}
+            onBlur={(e) => { setEditing(false); e.target.blur(); }}
             placeholder="channel name"
           />
           <button type="submit">+</button>
