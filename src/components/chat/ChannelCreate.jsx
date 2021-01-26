@@ -11,8 +11,7 @@ const ChannelCreate = () => {
   const createChannel = async (e) => {
     e.preventDefault();
 
-    await channelsRef.add({
-      id: channelName,
+    await channelsRef.doc(channelName).set({
       name: channelName,
     });
 

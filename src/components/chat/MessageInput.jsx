@@ -1,10 +1,11 @@
-import firebase from 'firebase/app';
-import { auth } from 'lib/firebase';
+import { auth, firestore } from 'lib/firebase';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
-const MessageInput = ({ messagesRef, onSubmit }) => {
+const MessageInput = ({ channel, onSubmit }) => {
   const [formValue, setFormValue] = useState('');
+
+  const messagesRef = firestore.collection('channels').doc(channel).collection('messages');
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -30,7 +31,7 @@ const MessageInput = ({ messagesRef, onSubmit }) => {
 };
 
 MessageInput.propTypes = {
-  messagesRef: firebase.firestore.CollectionReference.isRequired,
+  channel: PropTypes.string.isRequired,
   onSubmit: PropTypes.func,
 };
 
