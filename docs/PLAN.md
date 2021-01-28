@@ -33,7 +33,7 @@
 - [8. Outstanding Questions](#8-outstanding-questions)
 
 
-![Main Flowchart](docs/diagrams/build/main.png)
+![Main Flowchart](diagrams/build/main.png)
 
 ## 1. Tech Stack
 - Frontend: [React](https://reactjs.org/)
@@ -182,14 +182,14 @@ We're bringing in a lot of data here, from a bunch of different places
 #### 4.1.1. Trades
 When we get new trade data from Fidelity, this function will take the body of the CSV file and write it into individual Documents on the Trades Collection. I already implemented the core logic for this in the [Master Trade Ledger Google Sheet](https://docs.google.com/spreadsheets/d/1hmaPz5sL_8HmIBEJXbW8h6fERes7gXg7QC8KmoGRmjg/edit#gid=112027560). It's not clear whether we'll be able to automate pulling from Fidelity (that would be ideal) or whether we'll need a TextArea or similar which can be pasted into.
 
-![Trade Ingestion Flowchart](docs/diagrams/build/trade_ingestion.png)
+![Trade Ingestion Flowchart](diagrams/build/trade_ingestion.png)
 
 #### 4.1.2. Reports
 When an analyst has a new report, we need to collect both the PDF itself and metadata surrounding it: Ticker, Analyst, etc. In it's simplest form, this would require two sequential API calls, one to Cloud Storage with the file, and then one to the Reports Collection with the Metadata, including the URL of the file download.
 
 In our React frontend, we can access this function directly through the firebase package in a single function. However, by abstracting these two actions to a single function, we can also access them via an HTTP request. This opens up a cool project: we can ingest reports into the system through a discord bot.
 
-![Report Ingestion Flowchart](docs/diagrams/build/report_ingestion.png)
+![Report Ingestion Flowchart](diagrams/build/report_ingestion.png)
 
 #### 4.1.3. Historical Data
 Currently, our historical data is pulled through the `=GOOGLEFINANCE` function on Google Sheets, which is free but super slow. Sunny has been working on alternative sources for our historical data, [which are already being ingested into Firestore](https://github.com/ECMGIU/HistoricalData). We'll continue to expand this, put it into a serverless function, and further automate the process in three ways.
@@ -197,14 +197,14 @@ Currently, our historical data is pulled through the `=GOOGLEFINANCE` function o
   2. Automated selection (pulling exactly the hisotrical data we need, without configuration)
   3. Dynamic querying (far better insights than Google Sheets)
 
-![Historical Data Ingestion Flowchart](docs/diagrams/build/historical_data_ingestion.png)
+![Historical Data Ingestion Flowchart](diagrams/build/historical_data_ingestion.png)
 
 #### 4.1.4. Ticker Data
 We'll probably want to refer to companies with their full names and exchanges at some point, not just tickers. Yahoo Finance makes this data available to us via the following endpoint.
 ```
 http://autoc.finance.yahoo.com/autoc?lang=en&query={Ticker}
 ```
-![Ticker Ingestion Flowchart](docs/diagrams/build/ticker_ingestion.png)
+![Ticker Ingestion Flowchart](diagrams/build/ticker_ingestion.png)
 
 ### 4.2. Data Maintenence
 Since we've chosen NoSQL, we're going to carry a lot of redundant data through the structure. *This is intentional.* What this means, is we're going to denormalize (duplicate) data across different Collections and Documents. For those of you with a strong relational background (K204, anyone?) this sounds egregious. *I know.* What this allows though is an extremely simplified set of API calls that are incredibly performant. It's actually been used for a long time to achieve better performance in SQL queries, by minimizing the JOINs that occur on any particular request.
@@ -224,16 +224,16 @@ In the longer term, I think we can start automating production of some deliverab
 ## 5. Authentication
 Obviously we're going to be dealing with some sensitive (though not necessarily private) data here, and we dont want everything available to everybody. A major factor in our decision to use Firebase was how [easily it integrates](https://cloud.google.com/identity-platform/docs/web/saml) with [IU's SAML login](https://kb.iu.edu/d/bdag).
 
-![IU Login](docs/images/iu_login.png)
+![IU Login](images/iu_login.png)
 
 Meaning, you'll be able to log in to this platform just like you do Canvas, iGPS, One.IU and every other IU service and we'll have the same protections (2FA through Duo) as the rest of the university.
 
-![Auth Flowchart](docs/diagrams/build/auth.png)
+![Auth Flowchart](diagrams/build/auth.png)
 
 ## 6. Visualization
 The name of the game and one of the big end goals here is visualization.
 
-![D3.js](docs/images/d3js.png)
+![D3.js](images/d3js.png)
 
 [D3.js](https://d3js.org/) is the name of the game here, and the prominent frontend charting library *du jour*.
 
@@ -250,13 +250,13 @@ I've never worked with D3 (never done any dataviz from scratch) but I've continu
 ### 7.1. React
 I think React is the right way to go for this project, because it plays so nice with Firebase and is very much the libary of the day.
 
-![Top Frontend Frameworks Chart](docs/images/topfrontendframeworks.png)
+![Top Frontend Frameworks Chart](images/topfrontendframeworks.png)
 *[Source](https://existek.com/blog/top-front-end-frameworks-2020/)*
 
 I know this adds some degree of complexity over something like [Flask](https://flask.palletsprojects.com/en/1.1.x/) or [Django](https://www.djangoproject.com/), but it allows us to radically simplify auth (Firebase handles [JWTs](https://jwt.io/introduction) <10 lines of code with React) and I think we have more React frontend experience on our team than [Jinja2](https://jinja.palletsprojects.com/en/2.11.x/). 
 
 ### 7.2. Tailwind CSS
-![Tailwind CSS Logo](docs/images/tailwind.png)
+![Tailwind CSS Logo](images/tailwind.png)
 
 I'm also a huge fan of [Tailwind CSS](https://tailwindcss.com/). This project (despite the name) almost completely removes the need to write CSS. I'd *highly* encourage you to read through the landing page, it's pretty sick. This is an open source project I contribute to and I'm a big believer and evangelist for it.
 

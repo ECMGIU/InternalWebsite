@@ -2,7 +2,7 @@ import { firestore } from 'lib/firebase';
 import React, { useState } from 'react';
 import AutosizeInput from 'react-input-autosize';
 
-const CreateChannel = () => {
+const ChannelCreate = () => {
   const channelsRef = firestore.collection('channels');
 
   const [channelName, setChannelName] = useState('');
@@ -11,8 +11,7 @@ const CreateChannel = () => {
   const createChannel = async (e) => {
     e.preventDefault();
 
-    await channelsRef.add({
-      id: channelName,
+    await channelsRef.doc(channelName).set({
       name: channelName,
     });
 
@@ -36,9 +35,8 @@ const CreateChannel = () => {
       ) : (
         <button type="button" onClick={(e) => setEditing(true)}>+</button>
       )}
-
     </div>
   );
 };
 
-export default CreateChannel;
+export default ChannelCreate;
