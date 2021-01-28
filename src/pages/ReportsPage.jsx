@@ -1,4 +1,5 @@
 import ReportCard from 'components/ReportCard';
+import ReportForm from 'components/ReportForm';
 import Sidebar from 'layouts/Sidebar';
 import { firestore } from 'lib/firebase';
 import React from 'react';
@@ -10,6 +11,10 @@ const ReportsPage = () => {
   return (
     <Sidebar>
       <h1 className="title">Reports</h1>
+
+      <div className="border border-black">
+        <ReportForm />
+      </div>
 
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
       {loading && <span>Loading...</span>}
