@@ -1,3 +1,4 @@
+import firebase from 'firebase/app';
 import { firestore, storage } from 'lib/firebase';
 import PropTypes from 'prop-types';
 import React from 'react';
