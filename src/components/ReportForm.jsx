@@ -11,15 +11,13 @@ const ReportForm = () => {
     console.log(file);
     const uploadTask = storage.ref(`/reports/${file.name}`).put(file);
 
-    uploadTask.on('state_changed',
-      (snapShot) => {
-        console.log(snapShot);
-      }, (err) => {
-        console.log(err);
-      }, () => {
-        storage.ref('reports').child(file.name).getDownloadURL()
-          .then((url) => { setFileURL(url); });
-      });
+    //Addded not sure if this is right
+    const [url] = await storage
+    .bucket(bucketName)
+    .file(filename)
+    .getSignedUrl(options);
+
+    
   };
 
   return (
