@@ -12,14 +12,16 @@ const ReportsPage = () => {
     <Sidebar>
       <h1 className="title">Reports</h1>
 
-      <div className="border border-black">
-        <ReportForm />
+      <div className="max-w-2xl space-y-6">
+        <div className="border border-black">
+          <ReportForm />
+        </div>
+
+        {error && <strong>Error: {JSON.stringify(error)}</strong>}
+        {loading && <span>Loading...</span>}
+
+        {reports && reports.map((r) => <ReportCard key={r.id} report={r} />)}
       </div>
-
-      {error && <strong>Error: {JSON.stringify(error)}</strong>}
-      {loading && <span>Loading...</span>}
-
-      {reports && reports.map((r) => <ReportCard key={r.id} report={r} />)}
     </Sidebar>
   );
 };

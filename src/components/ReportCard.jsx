@@ -1,15 +1,17 @@
-import firebase from 'firebase';
-import { firestore } from 'lib/firebase';
+import { firestore, storage } from 'lib/firebase';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { useDownloadURL } from 'react-firebase-hooks/storage';
 
 const ReportCard = ({ report }) => {
+  // TODO: Why is idField needed?
   const [feedback] = useCollectionData(firestore.collection('reports').doc(report.id).collection('feedback'), { idField: 'id' });
+  const [downloadUrl] = useDownloadURL(storage.ref(report.ref));
 
   return (
-    <div className="max-w-2xl mb-4">
-      <a href={report.url} className="block border border-black">
+    <div className="mb-4">
+      <a key={report.id} href={downloadUrl || '#'} className="block border border-black">
         <div className="flex p-2 space-x-2">
           <div className="font-extrabold">{report.ticker}</div>
           <div className="flex-1">{report.title}</div>
@@ -17,7 +19,7 @@ const ReportCard = ({ report }) => {
         </div>
       </a>
       {feedback && feedback.length > 0 && feedback.map((f) => (
-        <div>
+        <div key={f.id}>
           <div className="inline-block px-2 py-1 ml-6 -mt-px text-sm border border-black">
             <span className="font-bold">{f.user}</span> {f.body}
           </div>
@@ -31,9 +33,9 @@ ReportCard.propTypes = {
   report: PropTypes.shape({
     id: PropTypes.string,
     title: PropTypes.string,
-    timestamp: firebase.firestore.Timestamp,
+    timestamp: firestore.Timestamp,
     ticker: PropTypes.string,
-    url: PropTypes.string,
+    ref: PropTypes.string,
     user: PropTypes.string,
   }).isRequired,
 };
