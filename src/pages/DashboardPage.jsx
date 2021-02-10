@@ -1,3 +1,4 @@
+import CurrentHoldings from 'components/dashboard/CurrentHoldings';
 import Sidebar from 'layouts/Sidebar';
 import React from 'react';
 
@@ -10,7 +11,7 @@ const HomePage = () => (
       <div className="border border-black placeholder centered">Reports Submitted</div>
       <div className="border border-black placeholder centered">Fourth Metric</div>
       <div className="border border-black row-span-2 placeholder centered">Recent Reports</div>
-      <div className="border border-black col-span-3 row-span-2 placeholder centered">Current Holdings Table</div>
+      <div className="col-span-3 row-span-2"><CurrentHoldings /></div>
     </div>
   </Sidebar>
 );
