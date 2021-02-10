@@ -1,8 +1,8 @@
 import { auth } from 'lib/firebase';
 import ChatPage from 'pages/ChatPage';
+import DashboardPage from 'pages/DashboardPage';
 import NotFoundPage from 'pages/errors/NotFoundPage';
 import FidelityInputPage from 'pages/FidelityInputPage';
-import HomePage from 'pages/HomePage';
 import LoginPage from 'pages/LoginPage';
 import PortfolioPage from 'pages/PortfolioPage';
 import ReportsPage from 'pages/ReportsPage';
@@ -21,7 +21,7 @@ const App = () => {
   return user ? (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <Route exact path="/" component={DashboardPage} />
         <Route exact path="/portfolio" component={PortfolioPage} />
         <Route exact path="/reports" component={ReportsPage} />
         <Route exact path="/trades" component={TradesPage} />
