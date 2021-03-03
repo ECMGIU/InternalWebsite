@@ -51,6 +51,7 @@
         "react/jsx-props-no-spreading": "off",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
-        "no-console": "off"
+        "no-console": "off",
+        "jsx-a11y/label-has-associated-control": "off"
     }
 }
