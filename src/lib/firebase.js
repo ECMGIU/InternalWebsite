@@ -4,6 +4,7 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/functions';
 import 'firebase/performance';
+import 'firebase/storage';
 
 // These look like they should be secured, but that's not needed
 const firebaseConfig = {
@@ -23,3 +24,4 @@ export const firestore = firebase.firestore();
 export const perf = firebase.performance();
 export const analytics = firebase.analytics();
 export const functions = firebase.functions();
+export const storage = firebase.storage();
