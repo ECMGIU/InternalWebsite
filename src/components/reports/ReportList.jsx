@@ -1,11 +1,9 @@
-import RecentReportsRow from 'components/dashboard/RecentReportsRow';
-import { firestore } from 'lib/firebase';
+import ReportListRow from 'components/reports/ReportListRow';
+import firebase from 'firebase/app';
 import React from 'react';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
-const RecentReports = () => {
-  const reportsRef = firestore.collection('reports');
-  const query = reportsRef.orderBy('createdAt', 'desc');
+const ReportList = ({ query }) => {
   const [reports, loading] = useCollectionData(query, { idField: 'id' });
 
   return (
@@ -14,11 +12,15 @@ const RecentReports = () => {
       {loading && <p>Loading...</p>}
       {reports && (
         <div>
-          { reports.map((r) => <RecentReportsRow report={r} />) }
+          { reports.map((r) => <ReportListRow report={r} />) }
         </div>
       )}
     </div>
   );
 };
 
-export default RecentReports;
+ReportList.propTypes = {
+  query: firebase.firestore.Query.isRequired,
+};
+
+export default ReportList;

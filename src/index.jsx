@@ -7,6 +7,7 @@ import LoginPage from 'pages/LoginPage';
 import PortfolioPage from 'pages/PortfolioPage';
 import ReportsPage from 'pages/ReportsPage';
 import TradesPage from 'pages/TradesPage';
+import UserPage from 'pages/UserPage';
 import { React } from 'react';
 import ReactDOM from 'react-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -27,6 +28,7 @@ const App = () => {
         <Route exact path="/trades" component={TradesPage} />
         <Route exact path="/fidelity" component={FidelityInputPage} />
         <Route exact path="/chat" component={ChatPage} />
+        <Route exact path="/user" component={UserPage} />
         <Route component={NotFoundPage} />
         {/* Additional routes should be added for additional pages. */}
       </Switch>
