@@ -22,7 +22,7 @@ const Sidebar = ({ children }) => {
           </ul>
         </div>
         <div className="flex justify-between w-full">
-          <div className="text-black placeholder">{user.email}</div>
+          <Link to="/user"><div className="text-black placeholder">{user.email}</div></Link>
           <button type="button" onClick={() => auth.signOut()} className="text-black placeholder">Logout</button>
         </div>
       </div>

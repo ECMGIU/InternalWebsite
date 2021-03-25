@@ -1,5 +1,5 @@
-import ReportCard from 'components/ReportCard';
-import ReportForm from 'components/ReportForm';
+import ReportCard from 'components/reports/ReportCard';
+import ReportForm from 'components/reports/ReportForm';
 import Sidebar from 'layouts/Sidebar';
 import { firestore } from 'lib/firebase';
 import React from 'react';

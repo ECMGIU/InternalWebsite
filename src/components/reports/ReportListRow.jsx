@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const RecentReportsRow = ({ report }) => {
+const ReportListRow = ({ report }) => {
   const x = 'a';
   return (
     <div className="flex w-full">
@@ -13,7 +13,7 @@ const RecentReportsRow = ({ report }) => {
   );
 };
 
-RecentReportsRow.propTypes = {
+ReportListRow.propTypes = {
   report: PropTypes.shape({
     id: PropTypes.string,
     title: PropTypes.string,
@@ -24,4 +24,4 @@ RecentReportsRow.propTypes = {
   }).isRequired,
 };
 
-export default RecentReportsRow;
+export default ReportListRow;
