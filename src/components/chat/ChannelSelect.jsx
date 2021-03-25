@@ -14,7 +14,9 @@ const ChannelSelect = ({ active, onSelect }) => {
     <div className="flex items-center px-2 py-1 border border-black space-x-4">
       <div className="font-bold">Channels</div>
       {channels && channels.map((c) => (
-        <button type="button" className={active === c.name && 'font-bold'} onClick={(e) => onSelect(c.name)}>#{c.name}</button>
+        <button type="button" className={active === c.name ? 'font-bold focus:outline-none' : 'focus:outline-none'} onClick={(e) => onSelect(c.name)}>
+          #{c.name}
+        </button>
       ))}
       <ChannelCreate />
     </div>

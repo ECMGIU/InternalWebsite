@@ -11,6 +11,7 @@ const CurrentHoldings = () => {
 
   return (
     <div className="p-3 border border-black">
+      <h2 className="mb-2 text-xl font-semibold">Current Holdings</h2>
       {loading && <p>Loading...</p>}
       {portfolio
               && (

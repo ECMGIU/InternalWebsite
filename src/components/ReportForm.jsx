@@ -43,23 +43,23 @@ const ReportForm = () => {
 
   return (
     <div className="p-2">
-      <form onSubmit={handleSubmit} className="space-y-2">
+      <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
         <h2 className="text-xl font-bold">Add Report</h2>
 
-        <div>
-          <label className="inline-block w-24">Title</label>
+        <label className="inline-block w-24">
+          Title
           <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="p-1 border border-black" />
-        </div>
+        </label>
 
-        <div>
-          <label className="inline-block w-24">Ticker</label>
+        <label className="inline-block w-24">
+          Ticker
           <input type="text" value={ticker} onChange={(e) => setTicker(e.target.value)} className="p-1 border border-black" />
-        </div>
+        </label>
 
-        <div>
-          <label className="inline-block w-24">Report PDF</label>
+        <label className="inline-block w-24">
+          Report PDF
           <input ref={fileInputRef} type="file" onChange={(e) => setFile(e.target.files[0])} />
-        </div>
+        </label>
 
         <button type="submit" className={`inline-block w-auto px-4 py-1 font-semibold text-white bg-black ${working && 'animate-spinning'}`}>Submit</button>
       </form>

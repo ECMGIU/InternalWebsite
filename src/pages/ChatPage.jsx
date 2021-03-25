@@ -12,7 +12,7 @@ const ChatPage = () => {
 
   return (
     <Sidebar>
-      <div className="flex flex-col w-2/3 h-full">
+      <div className="flex flex-col w-2/3 h-full min-w-96">
         <h1 className="title">Chat</h1>
         <ChannelSelect active={channel} onSelect={setChannel} />
         <div className="flex-1 mt-4">
