@@ -9,7 +9,7 @@ const portfoliosRef = db.collection("portfolios");
 
 const tastyworksConfig = functions.config().tastyworks;
 
-const accountNumber = tastyworksConfig.username;
+const accountNumber = tastyworksConfig.account;
 const credentials = {
   username: tastyworksConfig.username,
   password: tastyworksConfig.password,
