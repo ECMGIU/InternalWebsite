@@ -40,7 +40,8 @@ const parseAction = (action, type, subtype) => {
   } if (action.includes("EXPIRED")) {
     return "option expiration";
   }
-  return "unknown"; // we should never get here
+  // we should never get here
+  return "unknown (please email wbfletch@iu.edu, this needs to be resolved.)";
 };
 
 exports.ingestion = functions.https.onRequest(async (request, response) => {

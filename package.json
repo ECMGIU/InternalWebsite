@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "emulator": "firebase emulators:start",
+    "emulator": "export GOOGLE_APPLICATION_CREDENTIALS=\"$(realpath function-admin-key.json)\" && firebase emulators:start",
     "build": "craco build",
     "test": "craco test --passWithNoTests",
     "eject": "react-scripts eject",

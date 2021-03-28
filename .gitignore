@@ -31,3 +31,6 @@ yarn-error.log*
 
 # icloud drive files
 *.icloud
+
+# credentials
+function-admin-key.json
