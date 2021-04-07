@@ -13,9 +13,6 @@
 ## Report Management
 - As a member of ECMG, I want to know some information about the stock's performance between the posting of the report and the time of viewing.
 - As an Analyst, I want to upload my weekly report.
-	- Backend: Ingestion Function	
-	- <-FTS Interface: Web Form
-	- <-FTS Interface: Discord Bot
 - As a PM, I want to assign reports.
 - As a PM, I want to give feedback on my Analysts reports, both qualitatively for the Analyst and quantitative for Exec.
 - As a member of Exec, I want to view reports recommended by PMs and make a trade decision.
