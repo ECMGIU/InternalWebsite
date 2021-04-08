@@ -10,7 +10,10 @@
 - [Compliance](#compliance)
 
 
+?? (Ellie)
+
 ## Report Management
+Report Design (John)
 - As a member of ECMG, I want to know some information about the stock's performance between the posting of the report and the time of viewing.
 - As an Analyst, I want to upload my weekly report.
 - As a PM, I want to assign reports.
@@ -19,7 +22,7 @@
 
 
 ## Portfolio Management + Visualization
-- As a member of ECMG, I want to see a list of what is in the portfolio, and how it is performing.
+- As a member of ECMG, I want to see a list of what is in the portfolio, and how it is performing. (Sandeep)
 - As a member of ECMG, I want to know metadata (company name, exchange, etc.) about equities in our portfolio.
 - As a member of ECMG, I want to see a portfolio status update in the Discord server.
 - As an Analyst, I want to know the performance of my recommendations.
@@ -46,7 +49,7 @@
 
 
 ## Historical Data
-- As a member of ECMG, I want to view historical performance data for securities in our portfolio.
+- As a member of ECMG, I want to view historical performance data for securities in our portfolio. (Sunny)
 
 
 ## Compliance
