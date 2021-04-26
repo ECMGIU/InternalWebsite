@@ -9,11 +9,12 @@
 - [Historical Data](#historical-data)
 - [Compliance](#compliance)
 
+**Team:** Ellie, Kate, Nick, Sandeep, Sunny, Isha, Praneet, Abeer
 
-?? (Ellie)
+[Figma Design](https://www.figma.com/file/VVQ9jdiPMB7xetYT2D9dyJ/Project-Dalio-Mockup) 👨‍💻 (Kate + Nick)
 
 ## Report Management
-👨‍💻 Report Design (John)
+Report Design 👨‍💻 (John)
 - As a member of ECMG, I want to know some information about the stock's performance between the posting of the report and the time of viewing.
 - As an Analyst, I want to upload my weekly report. ✅
 - As a PM, I want to assign reports.
@@ -24,7 +25,7 @@
 ## Portfolio Management + Visualization
 - As a member of ECMG, I want to see a list of what is in the portfolio, and how it is performing. 👨‍💻 (Sandeep)
 - As a member of ECMG, I want to know metadata (company name, exchange, etc.) about equities in our portfolio. ✅
-- As a member of ECMG, I want to see a portfolio status update in the Discord server.
+- As a member of ECMG, I want to see a portfolio status update in the Discord server. 👨‍💻 (Ellie)
 - As an Analyst, I want to know the performance of my recommendations.
 - As an Analyst, I want to know if my report was accepted by the Investment Committee.
 - As a PM, I want to know the performance of my team.
@@ -33,7 +34,7 @@
 
 
 ## User Management
-- As a member of ECMG, I want to log in using my IU credentials and Duo.
+- As a member of ECMG, I want to log in using my IU credentials and Duo. 👨‍💻 (Isha)
 - As a member of ECMG, I want to pay my dues.
 - As a member of Exec, I want to limit which users are able to sign in.
 - As a member of Exec, I want to search and filter Analysts by performance metrics, including: # of reports, performance of recommendations, quality of report, and attendance.
@@ -41,7 +42,7 @@
 
 
 ## Event Management
-- As a member of ECMG, I want to see upcoming events. (Google Calendar Integration?)
+- As a member of ECMG, I want to see upcoming events. (Google Calendar Integration?) 👨‍💻 (Praneet)
 - As a member of ECMG, I want to join an event by clicking an attached Zoom link.
 - As a member of Exec, I want to create an event.
 - As a member of Exec, I want to record attendance at an event. (Attendance code?)
