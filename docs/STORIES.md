@@ -34,7 +34,7 @@ Report Design 👨‍💻 (John)
 
 
 ## User Management
-- As a member of ECMG, I want to log in using my IU credentials and Duo. 👨‍💻 (Isha)
+- As a member of ECMG, I want to log in using my IU credentials and Duo.
 - As a member of ECMG, I want to pay my dues.
 - As a member of Exec, I want to limit which users are able to sign in.
 - As a member of Exec, I want to search and filter Analysts by performance metrics, including: # of reports, performance of recommendations, quality of report, and attendance.
@@ -42,7 +42,7 @@ Report Design 👨‍💻 (John)
 
 
 ## Event Management
-- As a member of ECMG, I want to see upcoming events. (Google Calendar Integration?) 👨‍💻 (Praneet)
+- As a member of ECMG, I want to see upcoming events. (Google Calendar Integration?)
 - As a member of ECMG, I want to join an event by clicking an attached Zoom link.
 - As a member of Exec, I want to create an event.
 - As a member of Exec, I want to record attendance at an event. (Attendance code?)
