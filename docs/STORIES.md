@@ -9,7 +9,7 @@
 - [Historical Data](#historical-data)
 - [Compliance](#compliance)
 
-**Team:** Ellie, Kate, Nick, Sandeep, Sunny, Isha, Praneet, Abeer
+**Team:** Ellie, Kate, Nick, Sandeep, Sunny, Abeer
 
 [Figma Design](https://www.figma.com/file/VVQ9jdiPMB7xetYT2D9dyJ/Project-Dalio-Mockup) 👨‍💻 (Kate + Nick)
 
