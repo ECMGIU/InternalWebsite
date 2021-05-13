@@ -26,7 +26,7 @@ Report Design 👨‍💻 (John)
 - As a member of ECMG, I want to see a list of what is in the portfolio, and how it is performing. 👨‍💻 (Sandeep)
 - As a member of ECMG, I want to know metadata (company name, exchange, etc.) about equities in our portfolio. ✅
 - As a member of ECMG, I want to see a portfolio status update in the Discord server. 👨‍💻 (Ellie)
-- As an Analyst, I want to know the performance of my recommendations.
+- As an Analyst, I want to know the performance of my recommendations. 👨‍💻 (Abeer)
 - As an Analyst, I want to know if my report was accepted by the Investment Committee.
 - As a PM, I want to know the performance of my team.
 - As a PM, I want to know the relative performance of Analysts within my team.
@@ -34,7 +34,7 @@ Report Design 👨‍💻 (John)
 
 
 ## User Management
-- As a member of ECMG, I want to log in using my IU credentials and Duo.
+- As a member of ECMG, I want to log in using my IU credentials and Duo. 👨‍💻 (Sandeep)
 - As a member of ECMG, I want to pay my dues.
 - As a member of Exec, I want to limit which users are able to sign in.
 - As a member of Exec, I want to search and filter Analysts by performance metrics, including: # of reports, performance of recommendations, quality of report, and attendance.
